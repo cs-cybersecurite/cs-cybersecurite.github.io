@@ -1,0 +1,515 @@
+{
+  "version": 1,
+  "quizzes": [
+    {
+      "id": "chapitre-1",
+      "title": "Je me teste",
+      "shuffleQuestions": true,
+      "shuffleAnswers": true,
+      "questions": [
+        {
+          "id": "d3-1-1",
+          "text": "Les PDF s'ouvraient hier, mais plus aujourd'hui. Quel ticket ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Incident"
+            },
+            {
+              "id": "r1",
+              "text": "Demande"
+            },
+            {
+              "id": "r2",
+              "text": "Demande de matériel"
+            }
+          ],
+          "correctAnswerId": "r0",
+          "explanation": "Une fonction précédemment disponible ne fonctionne plus.",
+          "hint": "Repère les faits et la décision justifiée."
+        },
+        {
+          "id": "d3-1-2",
+          "text": "Quel titre décrit correctement le signalement ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Le logiciel est corrompu"
+            },
+            {
+              "id": "r1",
+              "text": "PC-12 : les PDF ne s'ouvrent plus"
+            },
+            {
+              "id": "r2",
+              "text": "Panne urgente !!!"
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "Le titre contient un symptôme et un équipement, sans cause inventée.",
+          "hint": "Repère les faits et la décision justifiée."
+        },
+        {
+          "id": "d3-1-3",
+          "text": "Le salarié dit « Internet est cassé ». Que dois-tu demander ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Le modèle de son bureau"
+            },
+            {
+              "id": "r1",
+              "text": "Le site concerné et le message affiché"
+            },
+            {
+              "id": "r2",
+              "text": "Le prix de son abonnement"
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "Des faits précis aident à comprendre le signalement.",
+          "hint": "Repère les faits et la décision justifiée."
+        }
+      ]
+    },
+    {
+      "id": "chapitre-2",
+      "title": "Je me teste",
+      "shuffleQuestions": true,
+      "shuffleAnswers": true,
+      "questions": [
+        {
+          "id": "d3-2-1",
+          "text": "Vingt salariés sont bloqués. Quelle information mesure l'impact ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Le nombre de personnes touchées"
+            },
+            {
+              "id": "r1",
+              "text": "L'ancienneté des ordinateurs"
+            },
+            {
+              "id": "r2",
+              "text": "Le nom du responsable"
+            }
+          ],
+          "correctAnswerId": "r0",
+          "explanation": "L'impact mesure les conséquences sur les personnes et les activités.",
+          "hint": "Repère les faits et la décision justifiée."
+        },
+        {
+          "id": "d3-2-2",
+          "text": "Une panne doit être contournée avant une réunion dans dix minutes. Quel facteur est important ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "L'urgence liée au délai"
+            },
+            {
+              "id": "r1",
+              "text": "La couleur du matériel"
+            },
+            {
+              "id": "r2",
+              "text": "La date d'achat"
+            }
+          ],
+          "correctAnswerId": "r0",
+          "explanation": "Le délai acceptable contribue à l'urgence.",
+          "hint": "Repère les faits et la décision justifiée."
+        },
+        {
+          "id": "d3-2-3",
+          "text": "Même impact, mais urgence différente : les priorités sont-elles forcément les mêmes ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Oui, toujours"
+            },
+            {
+              "id": "r1",
+              "text": "Non, la priorité tient compte des deux critères"
+            },
+            {
+              "id": "r2",
+              "text": "Oui, si les postes sont identiques"
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "La matrice de priorité combine impact et urgence selon les règles du service.",
+          "hint": "Repère les faits et la décision justifiée."
+        }
+      ]
+    },
+    {
+      "id": "chapitre-3",
+      "title": "Je me teste",
+      "shuffleQuestions": true,
+      "shuffleAnswers": true,
+      "questions": [
+        {
+          "id": "d3-3-1",
+          "text": "Un PDF est lisible à l'écran mais s'imprime mal. Quel contrôle est pertinent ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Examiner l'aperçu avant impression"
+            },
+            {
+              "id": "r1",
+              "text": "Remplacer le routeur"
+            },
+            {
+              "id": "r2",
+              "text": "Réinstaller le serveur"
+            }
+          ],
+          "correctAnswerId": "r0",
+          "explanation": "L'aperçu aide à situer le moment où apparaît le défaut.",
+          "hint": "Repère les faits et la décision justifiée."
+        },
+        {
+          "id": "d3-3-2",
+          "text": "Un second PDF s'imprime normalement. Que peux-tu conclure ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "L'imprimante est forcément en panne"
+            },
+            {
+              "id": "r1",
+              "text": "Le premier document ou sa préparation mérite une vérification"
+            },
+            {
+              "id": "r2",
+              "text": "Le réseau est nécessairement coupé"
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "Les résultats orientent le diagnostic sans démontrer immédiatement une cause unique.",
+          "hint": "Repère les faits et la décision justifiée."
+        },
+        {
+          "id": "d3-3-3",
+          "text": "Après avoir modifié un réglage, que faut-il faire ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Clôturer sans attendre"
+            },
+            {
+              "id": "r1",
+              "text": "Refaire un test pour confirmer le fonctionnement"
+            },
+            {
+              "id": "r2",
+              "text": "Effacer le diagnostic"
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "La résolution se vérifie par un test.",
+          "hint": "Repère les faits et la décision justifiée."
+        }
+      ]
+    },
+    {
+      "id": "chapitre-4",
+      "title": "Je me teste",
+      "shuffleQuestions": false,
+      "shuffleAnswers": false,
+      "questions": [
+        {
+          "id": "d3-4-1",
+          "text": "Tu sais qu'un pare-feu bloque une application, mais tu n'as pas le droit de modifier ses règles. Que fais-tu ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "Je demande l'intervention de l'équipe habilitée et je transmets mes tests."
+            },
+            {
+              "id": "b",
+              "text": "Je modifie les règles sans autorisation."
+            },
+            {
+              "id": "c",
+              "text": "Je ferme le ticket sans rien transmettre."
+            }
+          ],
+          "correctAnswerId": "a",
+          "explanation": "Même avec un diagnostic correct, tu dois respecter les droits d'intervention.",
+          "hint": "Savoir ce qu'il faut faire ne signifie pas avoir l'autorisation de le faire."
+        },
+        {
+          "id": "d3-4-2",
+          "text": "Une imprimante est en panne. Tu connais la solution et tu as l'autorisation d'intervenir. Que fais-tu ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "Je transmets immédiatement à un spécialiste."
+            },
+            {
+              "id": "b",
+              "text": "Je réalise l'intervention, je vérifie et je complète le ticket."
+            },
+            {
+              "id": "c",
+              "text": "Je ferme le ticket sans tester."
+            }
+          ],
+          "correctAnswerId": "b",
+          "explanation": "Escalader n'est pas automatique : tu peux résoudre un incident dans ton périmètre.",
+          "hint": "As-tu les compétences et l'autorisation pour intervenir ?"
+        },
+        {
+          "id": "d3-4-3",
+          "text": "Un serveur est en panne. Un spécialiste intervient, mais plusieurs services risquent de dépasser une échéance. Qui faut-il aussi prévenir ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "Personne : le spécialiste s'occupe déjà du problème."
+            },
+            {
+              "id": "b",
+              "text": "Uniquement les utilisateurs après la réparation."
+            },
+            {
+              "id": "c",
+              "text": "Le responsable, pour évaluer les conséquences et décider des priorités."
+            }
+          ],
+          "correctAnswerId": "c",
+          "explanation": "Une escalade technique et une information au responsable peuvent être nécessaires en même temps.",
+          "hint": "Une réparation technique ne règle pas à elle seule le problème du délai."
+        },
+        {
+          "id": "d3-4-4",
+          "text": "Tu transmets un incident à une autre équipe. Quelles informations sont les plus utiles ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "« Ça ne marche pas, merci de voir. »"
+            },
+            {
+              "id": "b",
+              "text": "Les symptômes, les personnes touchées, les tests, leurs résultats et la raison de l'escalade."
+            },
+            {
+              "id": "c",
+              "text": "Uniquement le numéro du ticket, sans préciser les tests."
+            }
+          ],
+          "correctAnswerId": "b",
+          "explanation": "Décrire les symptômes, les vérifications et leurs résultats évite de recommencer le diagnostic.",
+          "hint": "De quelles informations le collègue a-t-il besoin pour poursuivre le travail ?"
+        }
+      ]
+    },
+    {
+      "id": "chapitre-5",
+      "title": "Je me teste",
+      "shuffleQuestions": false,
+      "shuffleAnswers": false,
+      "questions": [
+        {
+          "id": "d3-5-trace",
+          "text": "Tu as rebranché le câble de l'écran d'Inès. L'image est revenue. Que notes-tu dans le ticket ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "Câble de l'écran rebranché. Test d'affichage réussi."
+            },
+            {
+              "id": "b",
+              "text": "Écran à nouveau fonctionnel après intervention."
+            },
+            {
+              "id": "c",
+              "text": "Câble de l'écran rebranché. Test à faire avec Inès."
+            }
+          ],
+          "correctAnswerId": "a",
+          "explanation": "Cette trace indique l'action réalisée et le résultat du test. Un collègue pourra comprendre ce qui a été fait.",
+          "hint": "Cherche la réponse qui précise à la fois l'action et le résultat déjà vérifié."
+        },
+        {
+          "id": "d3-5-message",
+          "text": "L'écran d'Inès fonctionne à nouveau. Quel message lui envoies-tu ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "J'ai rebranché le câble. Peux-tu vérifier que l'écran fonctionne bien ?"
+            },
+            {
+              "id": "b",
+              "text": "J'ai rebranché le câble. L'écran fonctionne maintenant."
+            },
+            {
+              "id": "c",
+              "text": "L'écran fonctionne. Je vais clôturer le ticket."
+            }
+          ],
+          "correctAnswerId": "a",
+          "explanation": "Le message explique l'intervention et demande à Inès de vérifier elle-même le résultat.",
+          "hint": "Informer ne suffit pas : Inès doit aussi pouvoir confirmer que tout fonctionne."
+        },
+        {
+          "id": "d3-5-1",
+          "text": "L'imprimante est en panne. Tu proposes une autre imprimante pour travailler. Que notes-tu ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "Une autre imprimante fonctionne. Incident résolu."
+            },
+            {
+              "id": "b",
+              "text": "Une autre imprimante est utilisée. La première reste en panne."
+            },
+            {
+              "id": "c",
+              "text": "La première imprimante est indisponible. Intervention terminée."
+            }
+          ],
+          "correctAnswerId": "b",
+          "explanation": "L'autre imprimante permet de travailler, mais la panne initiale existe toujours. C'est un contournement, pas une réparation.",
+          "hint": "Le travail peut reprendre, mais l'imprimante en panne a-t-elle été réparée ?"
+        },
+        {
+          "id": "d3-5-2",
+          "text": "Tu as terminé la réparation. L'utilisateur travaille de nuit. Il ne peut pas tester maintenant. Que fais-tu ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "J'envoie une demande de validation. Il pourra tester à son retour."
+            },
+            {
+              "id": "b",
+              "text": "J'indique que la réparation est faite et je clôture le ticket."
+            },
+            {
+              "id": "c",
+              "text": "J'attends qu'il soit disponible pour lui demander de tester en direct."
+            }
+          ],
+          "correctAnswerId": "a",
+          "explanation": "Une demande de validation permet à l'utilisateur de tester plus tard. La clôture suit ensuite les règles du service.",
+          "hint": "Il peut tester plus tard sans que le technicien soit présent au même moment."
+        }
+      ]
+    },
+    {
+      "id": "chapitre-suivi",
+      "title": "Je me teste",
+      "shuffleQuestions": false,
+      "shuffleAnswers": false,
+      "questions": [
+        {
+          "id": "suivi-1",
+          "text": "Après un redémarrage, le logiciel de facturation ne s'ouvre toujours pas. Le technicien veut noter ce résultat. Que choisit-il ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "Créer une tâche"
+            },
+            {
+              "id": "b",
+              "text": "Ajouter un suivi"
+            },
+            {
+              "id": "c",
+              "text": "Ajouter une solution"
+            }
+          ],
+          "correctAnswerId": "b",
+          "explanation": "Un suivi permet de garder les résultats des vérifications, sans organiser une nouvelle intervention.",
+          "hint": "Il veut conserver une observation, pas planifier un travail."
+        },
+        {
+          "id": "suivi-2",
+          "text": "Une intervention sur un serveur doit avoir lieu après le départ des salariés, à 19 h. Comment l'organiser ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "Ajouter un suivi sans horaire"
+            },
+            {
+              "id": "b",
+              "text": "Créer une tâche planifiée à 19 h"
+            },
+            {
+              "id": "c",
+              "text": "Ajouter une solution avant l'intervention"
+            }
+          ],
+          "correctAnswerId": "b",
+          "explanation": "La tâche précise le travail, le technicien chargé de l'effectuer et éventuellement la date prévue.",
+          "hint": "Il faut organiser une action à réaliser plus tard."
+        },
+        {
+          "id": "suivi-3",
+          "text": "Le service d'impression a été redémarré. Une page de test s'imprime correctement. Quelle action décrit la réparation ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "Créer une autre tâche pour redémarrer le service"
+            },
+            {
+              "id": "b",
+              "text": "Ajouter seulement le résultat du premier appel"
+            },
+            {
+              "id": "c",
+              "text": "Ajouter une solution avec la réparation et le test réussi"
+            }
+          ],
+          "correctAnswerId": "c",
+          "explanation": "La solution décrit ce qui a permis de résoudre la panne. Elle est différente de la tâche ou d'un simple suivi.",
+          "hint": "La panne a été réparée."
+        },
+        {
+          "id": "suivi-4",
+          "text": "Une panne d'impression revient, mais le ticket précédent est fermé. Que fait le technicien ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "Il modifie la solution de l'ancien ticket"
+            },
+            {
+              "id": "b",
+              "text": "Il crée un nouveau ticket en rappelant le numéro de l'ancien"
+            },
+            {
+              "id": "c",
+              "text": "Il marque l'ancienne tâche « à faire »"
+            }
+          ],
+          "correctAnswerId": "b",
+          "explanation": "Dans notre procédure de support, un ticket fermé n'est pas rouvert. Le nouveau ticket peut faire référence à l'ancien.",
+          "hint": "Le ticket précédent est terminé."
+        },
+        {
+          "id": "suivi-5",
+          "text": "Après réparation et vérification, le technicien ajoute une solution dans GLPI. Que se passe-t-il normalement ?",
+          "answers": [
+            {
+              "id": "a",
+              "text": "Le ticket est immédiatement et définitivement fermé."
+            },
+            {
+              "id": "b",
+              "text": "Le ticket devient résolu ; l'utilisateur peut approuver ou refuser la solution."
+            },
+            {
+              "id": "c",
+              "text": "Une demande de validation doit obligatoirement être envoyée au responsable."
+            }
+          ],
+          "correctAnswerId": "b",
+          "explanation": "Ajouter une solution fait passer le ticket à Résolu. Son approbation par le demandeur permet ensuite sa fermeture, selon le fonctionnement configuré.",
+          "hint": "Résolu et Fermé ne sont pas le même état."
+        }
+      ]
+    }
+  ]
+}

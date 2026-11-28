@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>Dépannage réseau | Première CIEL</title>
+<style>
+:root{font:16px/1.5 Arial,sans-serif;color-scheme:light dark;--bg:light-dark(#f0f5fa,#101924);--panel:light-dark(#fff,#1c2a3a);--ink:light-dark(#163149,#f0f5fc);--line:light-dark(#cbd8e4,#50637b);--accent:#1769b5;--ok:light-dark(#087849,#80dfb0)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink)}header{background:var(--panel);border-bottom:1px solid var(--line);padding:12px max(14px,calc((100vw - 940px)/2));display:flex;justify-content:space-between;align-items:center;gap:10px}h1{font-size:clamp(20px,4.5vw,29px);margin:0}header a{color:inherit}main{max-width:940px;margin:auto;padding:16px;display:grid;gap:15px}section,.panel{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:16px;min-width:0}h2{font-size:19px;margin:0 0 10px}p{margin:8px 0}button,input{font:inherit}button{cursor:pointer;border-radius:9px;padding:11px 13px;border:1px solid var(--line);color:var(--ink);background:var(--panel);min-height:46px}button.primary{background:var(--accent);border-color:var(--accent);color:white;font-weight:bold}button:disabled{opacity:.5;cursor:not-allowed}button:focus-visible,input:focus-visible{outline:3px solid #e5a83b;outline-offset:2px}.muted{color:light-dark(#4c6479,#b8c7d7)}.steps{display:flex;gap:5px;margin:9px 0}.steps span{height:9px;flex:1;border-radius:20px;background:light-dark(#d5dfeb,#3e4d5d)}.steps span.done{background:#1d9970}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.devices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}.device{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;min-width:0}.emoji{font-size:45px;line-height:1.2}.port{display:block;width:100%;margin-top:10px}.port.selected{border-color:#26a477;box-shadow:0 0 0 2px #26a477 inset}.state{border-radius:9px;background:light-dark(#eaf2fb,#26374b);padding:11px;margin:10px 0;white-space:pre-wrap}.guide{padding:14px;border-left:5px solid #3282c7;background:light-dark(#eaf3fe,#263d57);border-radius:8px;margin:12px 0}.browser{border:1px solid light-dark(#9ba9b8,#64788a);border-radius:12px;overflow:hidden;background:light-dark(#fff,#182536);box-shadow:0 5px 18px light-dark(#20364b16,#0006)}
+.browser-titlebar{background:light-dark(#e7ecf3,#27394a);display:flex;align-items:flex-end;gap:8px;padding:9px 11px 0;min-height:39px}
+.browser-tab{background:light-dark(#fff,#182536);border-radius:9px 9px 0 0;display:flex;align-items:center;gap:7px;font-size:13px;padding:7px 12px;max-width:240px;min-width:0;color:var(--ink)}
+.browser-tab span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.browser-window-controls{display:flex;gap:7px;align-self:center;margin-left:auto;padding-bottom:9px}
+.browser-window-controls i{display:block;width:9px;height:9px;border-radius:50%;background:light-dark(#aebdca,#738597)}
+.browser-toolbar{display:flex;align-items:center;gap:10px;padding:9px 12px;background:light-dark(#fff,#182536);border-bottom:1px solid var(--line)}
+.browser-nav{display:flex;align-items:center;gap:9px;color:light-dark(#778a9d,#91a5b8);font-size:20px;line-height:1}
+.browser-nav span{display:inline-block;min-width:15px;text-align:center}
+.browser-address{flex:1;border:1px solid light-dark(#d9e1ea,#415669);background:light-dark(#f1f4f8,#2c3d4e);border-radius:20px;padding:6px 12px;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:13px;color:var(--ink)}
+.browser-address .browser-lock{color:light-dark(#53677a,#bacad7);margin-right:5px}
+.browser-body{padding:25px clamp(14px,5vw,38px);min-height:175px}
+.browser-empty{color:light-dark(#64768a,#a9bbcc);text-align:center;padding:35px 0;font-size:14px}
+.browser-error{max-width:460px;margin:0 auto;display:flex;align-items:flex-start;gap:17px}
+.browser-error-icon{font-size:33px;line-height:1}
+.browser-error h3{font-size:18px;margin:0 0 9px}
+.browser-error p{font-size:14px;margin:5px 0}
+.browser-error-code{display:block;margin-top:13px;font:12px/1.4 Consolas,monospace;color:light-dark(#6e7e8e,#a4b5c6)}
+@media(max-width:480px){.browser-nav{gap:5px;font-size:17px}.browser-toolbar{gap:7px;padding:8px}.browser-tab{font-size:12px;max-width:175px}.browser-body{padding:20px 13px}.browser-error{gap:10px}.browser-error h3{font-size:16px}.browser-error-icon{font-size:26px}}.ping-session{white-space:pre-wrap;font:inherit;color:inherit}.terminal{background:#101d2b;color:#eff8fa;border-radius:10px;padding:13px;min-height:190px;font:13px/1.5 Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:340px;overflow:auto}.command-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}.command-choice{display:flex;flex-direction:column;align-items:flex-start;text-align:left;justify-content:center;gap:3px;min-height:78px;border:1px solid var(--line);background:var(--panel);padding:12px}.command-choice strong{font-size:14px;line-height:1.35}.command-choice code{font:13px/1.4 Consolas,monospace;overflow-wrap:anywhere;color:light-dark(#1967a1,#9ed4ff)}.command-choice:active{border-color:var(--accent)}@media(max-width:480px){.command-list{grid-template-columns:1fr}.command-choice{min-height:61px;padding:10px}}.hidden,[hidden]{display:none!important}.success{color:var(--ok);font-weight:bold}footer{text-align:center;font-size:12px;padding:15px}.hint{font-size:13px}.export{width:100%;margin-top:12px}@media(max-width:430px){section,.panel{padding:12px}.device{padding:9px}form{flex-direction:column}}
+.existing-installation{background:light-dark(#eef1f4,#1b2631);border:1px solid light-dark(#c7d0d9,#566575);border-radius:12px;padding:12px;margin:14px 0 18px}
+.existing-installation h3{font-size:17px;margin:0 0 5px;color:var(--ink)}
+.existing-installation .existing-instruction{font-weight:bold;margin:5px 0 10px}
+.existing-installation .wall-connection{background:light-dark(#f6f8fa,#23303c);margin:8px 0;border-color:light-dark(#c7d0d9,#566575)}
+.work-label{font-weight:bold;color:light-dark(#125992,#b5deff);margin:0 0 8px}
+#mini-step{border:2px solid light-dark(#1769b5,#74b9ef);box-shadow:0 0 0 3px light-dark(#e4f2ff,#253f54);margin-top:20px}
+#mini-step h3{font-size:20px}
+.wall-connection{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--panel);overflow:hidden;margin:12px 0}.tp-topology{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin:12px 0}
+.tp-topology .topo-node{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:12px;text-align:center;min-width:115px}
+.tp-topology .topo-node strong{display:block}.topo-arrow{font-size:24px;font-weight:700;color:var(--accent)}
+.tp-rack{margin:13px 0;border:1px solid var(--line);border-radius:11px;padding:12px;min-width:0}
+.tp-rack h3{margin:0 0 6px;font-size:17px}
+.tp-rack .cf-root{font-size:14px}
+.tp-rack .cf-device{width:100%}
+.tp-rack .cf-bank{overflow:visible}
+.tp-rack .cf-board{overflow-x:auto;overflow-y:hidden}
+.tp-rack .cf-port-actions{padding:6px 0}
+.tp-rack .cf-status{margin:7px 0}
+/* Dans ce TP, le mode Brancher et la face avant sont fixes : masquer la barre de réglages. */
+#cabling-section .cf-toolbar{display:none}
+@media(max-width:500px){.tp-topology .topo-node{min-width:90px;padding:8px}.tp-rack{padding:7px}}
+
+/* Parcours pédagogique : le trajet illustré est autorisé par la continuité R2D3. */
+.path-animation{margin:12px 0;border:1px solid var(--line);border-radius:12px;padding:10px;background:light-dark(#f4f8fc,#172635)}
+.path-animation[hidden]{display:none!important}
+.path-animation h3{font-size:17px;margin:0 0 5px}
+.path-rail{display:flex;align-items:stretch;justify-content:flex-start;gap:0;overflow-x:auto;overscroll-behavior-x:contain;padding:10px 0 13px;scroll-behavior:smooth}
+.path-stop{position:relative;flex:0 0 100px;min-height:88px;border:2px solid var(--line);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:6px 3px;background:var(--panel);opacity:.65;transition:opacity .2s,border-color .2s,box-shadow .2s,transform .2s}
+.path-stop .path-icon{font-size:25px;line-height:1.2}
+.path-stop strong{font-size:12px;text-align:center;line-height:1.3}
+.path-stop small{font-size:11px;text-align:center;line-height:1.2;color:var(--ink)}
+.path-stop.reached{opacity:1;border-color:#168456;background:light-dark(#e7f9f0,#1c4338)}
+.path-stop.active{opacity:1;border-color:#1580ce;box-shadow:0 0 0 4px light-dark(#d5eefe,#194867);transform:translateY(-3px)}
+.path-wire{flex:0 0 28px;min-height:88px;display:flex;align-items:center;justify-content:center;position:relative}
+.path-wire::before{content:"";width:100%;height:5px;border-radius:5px;background:light-dark(#b9cad8,#526578);transition:background .2s}
+.path-wire.reached::before{background:#168456}
+.path-packet{display:none;position:absolute;left:0;top:calc(50% - 11px);width:22px;height:22px;border-radius:50%;background:#36d6ff;box-shadow:0 0 0 3px #065e80,0 0 14px #36d6ff;z-index:2}
+.path-wire.active .path-packet{display:block;animation:packet-travel .19s linear both}
+@keyframes packet-travel{from{transform:translateX(0)}to{transform:translateX(20px)}}
+.path-caption{min-height:48px;margin-top:2px;font-weight:600}
+.path-animation .path-legend{font-size:12px;color:var(--ink);opacity:.82}
+@media(prefers-reduced-motion:reduce){.path-stop,.path-wire::before{transition:none}.path-stop.active{transform:none}.path-wire.active .path-packet{animation:none;left:calc(50% - 11px)}.path-rail{scroll-behavior:auto}}
+
+/* Parcours final complet : six équipements visibles, sans défilement horizontal. */
+#final-path-rail>.path-rail{width:100%;overflow:visible;min-width:0}
+#final-path-rail .path-stop{flex:1 1 0;min-width:0;padding:6px 2px}
+#final-path-rail .path-stop strong{font-size:clamp(10px,1.4vw,12px);overflow-wrap:anywhere}
+#final-path-rail .path-stop small{font-size:10px}
+#final-path-rail .path-wire{flex:0 0 14px}
+#final-path-rail .path-wire.active .path-packet{width:13px;height:13px;top:calc(50% - 6px)}
+@media(max-width:600px){
+ #final-path-rail>.path-rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+ #final-path-rail .path-stop{width:100%;min-height:84px}
+ #final-path-rail .path-stop strong{font-size:11px}
+ #final-path-rail .path-wire{display:none}
+ #final-path-rail .path-stop::before{content:attr(data-path-number);position:absolute;top:3px;left:5px;font-size:10px;color:var(--ink);opacity:.8}
+}
+/* Progression en bas, toujours visible sans cacher les boutons sur smartphone. */
+body{padding-bottom:106px}
+#progress-dock{position:fixed;z-index:30;bottom:0;left:0;right:0;margin:0 auto;max-width:940px;padding:9px 16px 7px;background:var(--panel);border:1px solid var(--line);border-bottom:0;border-radius:12px 12px 0 0;box-shadow:0 -5px 22px light-dark(#15344b25,#0008)}
+#progress-dock .row{font-size:13px}#progress-dock .steps{margin:6px 0 4px}#progress-dock .steps span{height:7px}
+#progress-label{font-size:12px;margin:3px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#diagnosis-panel{margin:14px 0;padding:14px;border:1px solid var(--line);border-radius:11px;background:light-dark(#f4f8fc,#243549)}
+#diagnosis-panel h3{font-size:17px;margin:0 0 8px}
+#diagnosis-choices{border:0;padding:0;margin:10px 0;display:grid;gap:8px}
+#diagnosis-choices label{display:flex;align-items:flex-start;gap:9px;cursor:pointer;padding:9px;border:1px solid var(--line);border-radius:8px}
+#diagnosis-choices input{margin-top:5px;accent-color:var(--accent);flex:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:480px){body{padding-bottom:102px}#progress-dock{padding:8px 12px 6px}#progress-dock .row{font-size:12px}}
+</style><link rel="stylesheet" href="https://chaoli22000bzh.github.io/C2-Lab/shared-ui/v1/cabling-frontpanel.css?v=1.5"></head><body>
+<header><h1>Dépannage réseau</h1><a href="/">Accueil</a></header><main>
+<section><h2>Situation professionnelle</h2><p>Vous êtes technicien informatique dans une entreprise.</p><p>Un salarié vous contacte car il n'arrive pas à accéder à Internet depuis son PC portable. Il vient de s'installer dans un nouveau bureau.</p><p><strong>Votre mission :</strong> rétablir sa connexion à Internet.</p></section>
+<aside id="progress-dock" aria-label="Progression de l’intervention"><div class="row" style="justify-content:space-between"><strong>Progression de l’intervention</strong><span id="progress-text">0 / 9 étapes</span></div><div class="steps" id="progress"></div><p class="muted hint" id="progress-label">Réparer le brassage réseau</p></aside>
+<section id="cabling-section"><h2>1. Réparer le brassage réseau</h2>
+<div class="guide"><strong>Votre mission :</strong> réparer les branchements dans les deux baies, puis vérifier la continuité jusqu'au switch.</div>
+<div class="existing-installation">
+<h3>Installation existante</h3>
+<p class="existing-instruction">✓ Le PC est déjà branché à la prise F. Rien à faire ici.</p>
+<div class="wall-connection" role="img" aria-label="Bandeau mural avec six prises A, B, C, D, E et F, relié par un câble Ethernet depuis la prise F au PC portable situé à droite">
+<svg viewBox="0 0 750 174" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:100%;height:auto;display:block">
+<rect x="8" y="35" width="455" height="105" rx="10" fill="#dce5ef" stroke="#62778b" stroke-width="3"/>
+<rect x="24" y="47" width="423" height="82" rx="6" fill="#f6f9fc" stroke="#a2b3c4"/>
+<text x="32" y="23" fill="currentColor" font-family="Arial,sans-serif" font-size="16" font-weight="bold">Bandeau de prises murales</text>
+<g><rect x="35" y="65" width="50" height="49" rx="5" fill="#e1e9f1" stroke="#71869a" stroke-width="2"/><rect x="47" y="82" width="26" height="21" rx="2" fill="#273849"/><path d="M52 82v-7h16v7" fill="none" stroke="#273849" stroke-width="3"/><text x="60" y="59" text-anchor="middle" fill="#243849" font-size="15" font-family="Arial" font-weight="bold">A</text></g><g><rect x="103" y="65" width="50" height="49" rx="5" fill="#e1e9f1" stroke="#71869a" stroke-width="2"/><rect x="115" y="82" width="26" height="21" rx="2" fill="#273849"/><path d="M120 82v-7h16v7" fill="none" stroke="#273849" stroke-width="3"/><text x="128" y="59" text-anchor="middle" fill="#243849" font-size="15" font-family="Arial" font-weight="bold">B</text></g><g><rect x="171" y="65" width="50" height="49" rx="5" fill="#e1e9f1" stroke="#71869a" stroke-width="2"/><rect x="183" y="82" width="26" height="21" rx="2" fill="#273849"/><path d="M188 82v-7h16v7" fill="none" stroke="#273849" stroke-width="3"/><text x="196" y="59" text-anchor="middle" fill="#243849" font-size="15" font-family="Arial" font-weight="bold">C</text></g><g><rect x="239" y="65" width="50" height="49" rx="5" fill="#e1e9f1" stroke="#71869a" stroke-width="2"/><rect x="251" y="82" width="26" height="21" rx="2" fill="#273849"/><path d="M256 82v-7h16v7" fill="none" stroke="#273849" stroke-width="3"/><text x="264" y="59" text-anchor="middle" fill="#243849" font-size="15" font-family="Arial" font-weight="bold">D</text></g><g><rect x="307" y="65" width="50" height="49" rx="5" fill="#e1e9f1" stroke="#71869a" stroke-width="2"/><rect x="319" y="82" width="26" height="21" rx="2" fill="#273849"/><path d="M324 82v-7h16v7" fill="none" stroke="#273849" stroke-width="3"/><text x="332" y="59" text-anchor="middle" fill="#243849" font-size="15" font-family="Arial" font-weight="bold">E</text></g><g><rect x="375" y="65" width="50" height="49" rx="5" fill="#e8f7ed" stroke="#16814d" stroke-width="3"/><rect x="387" y="82" width="26" height="21" rx="2" fill="#273849"/><path d="M392 82v-7h16v7" fill="none" stroke="#273849" stroke-width="3"/><text x="400" y="59" text-anchor="middle" fill="#243849" font-size="15" font-family="Arial" font-weight="bold">F</text></g>
+<path d="M400 104 L400 148 Q400 158 412 158 H515 Q528 158 528 146 V113 H554" fill="none" stroke="#1a8d63" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M400 104 L400 148 Q400 158 412 158 H515 Q528 158 528 146 V113 H554" fill="none" stroke="#a2f3ce" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+<rect x="394" y="101" width="12" height="13" rx="2" fill="#30865f" stroke="#19533c"/>
+<path d="M564 48 H707 L721 131 H548 Z" fill="#a8bacb" stroke="#496175" stroke-width="3"/>
+<rect x="576" y="57" width="119" height="66" rx="3" fill="#1c364e" stroke="#536d81"/>
+<rect x="582" y="63" width="107" height="54" rx="2" fill="#4c88aa"/>
+<path d="M548 131 H721 L736 145 H535 Z" fill="#d3dde7" stroke="#62778b" stroke-width="2"/>
+<path d="M553 136 H715" stroke="#71869a" stroke-width="2"/>
+<rect x="550" y="106" width="14" height="13" rx="2" fill="#1f3447"/>
+<text x="640" y="24" text-anchor="middle" fill="currentColor" font-family="Arial" font-size="16" font-weight="bold">PC portable</text>
+</svg>
+<p class="muted hint" style="text-align:center;margin-bottom:0">Câble vert : branchement déjà réalisé.</p>
+</div>
+</div>
+<div class="tp-rack" id="mini-step">
+<p class="work-label">▶ DÉBUT DU TRAVAIL : ÉTAPE 1</p>
+<h3>Mini-Baie N° <strong>5</strong></h3>
+<p>La prise F du panneau correspond à la prise murale. Reliez <strong>F</strong> au départ <strong>D</strong> situé à droite des deux emplacements vides.</p>
+<div id="mini-panel"></div>
+<button id="validate-mini" class="primary" type="button">Valider le brassage de la mini-baie</button>
+<p id="mini-result" class="state" role="status">Brassage à réaliser.</p></div>
+<div class="tp-rack" id="main-step" hidden>
+<h3>Grande baie</h3>
+<p>Le câble du départ D arrive à la prise <strong>D5</strong> du panneau central. Reliez D5 au port <strong>23</strong> du switch.</p>
+<div id="main-panel"></div>
+<button id="validate-main" class="primary" type="button">Valider le brassage de la grande baie</button>
+<p id="main-result" class="state" role="status">Brassage à réaliser.</p></div>
+<div id="continuity-step" hidden><p>Les deux brassages sont terminés. Vérifiez maintenant la continuité physique du PC jusqu'au switch.</p>
+<button id="continuity" type="button" class="primary">Tester la continuité PC → switch</button>
+<p class="state" id="continuity-result" role="status">Test non effectué.</p>
+<div id="path-animation" class="path-animation" hidden>
+<h3>Le trajet du signal dans l'installation</h3>
+<p class="muted hint">Regarde le signal avancer, étape par étape, jusqu'au switch.</p>
+<div id="path-rail" class="path-rail" aria-label="Parcours du PC jusqu'au switch">
+<div class="path-stop" data-path-stop="0"><span class="path-icon" aria-hidden="true">💻</span><strong>PC portable</strong><small>Port RJ45</small></div>
+<div class="path-wire" data-path-wire="0"><span class="path-packet"></span></div>
+<div class="path-stop" data-path-stop="1"><span class="path-icon" aria-hidden="true">🔌</span><strong>Prise murale F</strong><small>Déjà raccordée</small></div>
+<div class="path-wire" data-path-wire="1"><span class="path-packet"></span></div>
+<div class="path-stop" data-path-stop="2"><span class="path-icon" aria-hidden="true">🗄️</span><strong>Mini-baie n°5</strong><small>F → D</small></div>
+<div class="path-wire" data-path-wire="2"><span class="path-packet"></span></div>
+<div class="path-stop" data-path-stop="3"><span class="path-icon" aria-hidden="true">🗄️</span><strong>Grande baie</strong><small>D5</small></div>
+<div class="path-wire" data-path-wire="3"><span class="path-packet"></span></div>
+<div class="path-stop" data-path-stop="4"><span class="path-icon" aria-hidden="true">🔀</span><strong>Switch SW01</strong><small>Port 23</small></div>
+<!-- Etape réservée à la future animation finale TCP/IP : ne pas montrer au test physique. -->
+<div class="path-wire" data-path-wire="4" hidden><span class="path-packet"></span></div>
+<div class="path-stop" data-path-stop="5" hidden><span class="path-icon" aria-hidden="true">🌐</span><strong>Internet</strong><small>Connexion rétablie</small></div>
+</div>
+<p id="path-caption" class="path-caption" role="status" aria-live="polite">Prêt à vérifier le parcours.</p>
+<p class="path-legend">Animation pédagogique du trajet physique validé par R2D3. Le fonctionnement IP et l'accès à Internet ne sont pas encore vérifiés.</p>
+</div></div></section>
+<section id="browser-section" hidden><h2>2. Vérifier Internet</h2><p>Le technicien ouvre un navigateur pour vérifier l'accès à Internet.</p><div class="browser" aria-label="Navigateur web simulé">
+<div class="browser-titlebar"><div class="browser-tab"><span aria-hidden="true">🌐</span><span>Nouvel onglet</span></div><div class="browser-window-controls" aria-hidden="true"><i></i><i></i><i></i></div></div>
+<div class="browser-toolbar"><div class="browser-nav" aria-hidden="true"><span>←</span><span>→</span><span>↻</span></div><div class="browser-address"><span class="browser-lock" aria-hidden="true">🌐</span>www.google.fr</div></div>
+<div class="browser-body" id="browser-result" aria-live="polite"><div class="browser-empty">Le navigateur est ouvert. Clique sur « Accéder au site » pour charger la page.</div></div>
+</div><button class="primary" id="open-web" type="button" style="margin-top:10px">Accéder au site</button></section>
+<section id="console-section" hidden><h2>3. Outils du technicien</h2><div class="guide" id="technician" aria-live="polite">Observe les résultats et choisis les commandes nécessaires pour rétablir Internet.</div><p class="muted">Choisis les commandes utiles, lis leurs résultats, puis vérifie ta réparation avec un Ping.</p><div class="command-list" id="command-list" aria-label="Commandes du technicien"><button class="command-choice" type="button" data-command="ipconfig /all"><strong>Afficher toutes les informations réseau</strong><code>ipconfig /all</code></button><button class="command-choice" type="button" data-command="ipconfig /release"><strong>Enlever l’adresse IP actuelle</strong><code>ipconfig /release</code></button><button class="command-choice" type="button" data-command="ipconfig /renew"><strong>Demander une nouvelle adresse IP</strong><code>ipconfig /renew</code></button><button class="command-choice" type="button" data-command="ping 8.8.8.8"><strong>Tester la connexion vers une adresse IP</strong><code>ping 8.8.8.8</code></button><button class="command-choice" type="button" data-command="ping google.fr"><strong>Tester la connexion vers un nom de site</strong><code>ping google.fr</code></button></div><div class="terminal" id="terminal-output" aria-label="Résultats de l’invite de commandes" role="log">Microsoft Windows [simulation pédagogique]\nC:\\Users\\technicien&gt;</div>
+</section>
+<section id="final-browser-section" hidden>
+<h2>4. Retour au navigateur : vérifier Internet</h2>
+<p>Un Ping a réussi. Retourne dans le navigateur et vérifie que le site s’affiche.</p>
+<div class="browser" aria-label="Navigateur web simulé après dépannage">
+<div class="browser-titlebar"><div class="browser-tab"><span aria-hidden="true">🌐</span><span>Nouvel onglet</span></div><div class="browser-window-controls" aria-hidden="true"><i></i><i></i><i></i></div></div>
+<div class="browser-toolbar"><div class="browser-nav" aria-hidden="true"><span>←</span><span>→</span><span>↻</span></div><div class="browser-address"><span class="browser-lock" aria-hidden="true">🌐</span>www.google.fr</div></div>
+<div class="browser-body" id="final-browser-result" aria-live="polite"><div class="browser-empty">Prêt à vérifier le site après l'intervention.</div></div>
+</div>
+<button class="primary" id="final-open-web" type="button" style="margin-top:10px">Accéder au site</button>
+<p id="final-browser-status" class="state" role="status">Vérification finale non effectuée.</p><div id="final-path-animation" class="path-animation" hidden><h3>Le trajet du PC jusqu’à Internet</h3><div id="final-path-rail" class="path-rail" aria-label="Parcours du PC vers Internet"></div><p id="final-path-caption" class="path-caption" role="status" aria-live="polite"></p><p class="path-legend">Schéma pédagogique de la connexion rétablie après correction TCP/IP.</p></div>
+</section>
+<section><h2>5. Remettre mon travail</h2><p>Termine le dépannage et vérifie l’accès à Internet. Le bilan technique sera préparé automatiquement pour le formulaire de remise.</p><div id="report" class="state">Aucune manipulation enregistrée pour le moment.</div><button class="primary export" id="submit-form" type="button" disabled>Remettre mon travail</button><p class="muted hint" id="submit-hint">🔒 Vérification finale du navigateur nécessaire avant la remise.</p><p class="muted hint">Le formulaire Google s’ouvrira. Saisis ton code de session, ton nom et ton prénom, puis clique sur « Envoyer ». Aucun fichier à télécharger.</p><button class="primary export" id="export" type="button" disabled hidden>Exporter mon travail à rendre à mon professeur (JSON)</button><p class="muted hint" id="export-hint" hidden></p></section></main><footer>Première CIEL · Dépannage réseau · V1.17 · Simulation pédagogique R2D3</footer>
+<script type="module" src="./tp.js?v=1.17"></script></body></html>

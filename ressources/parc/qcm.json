@@ -1,0 +1,405 @@
+{
+  "version": 1,
+  "quizzes": [
+    {
+      "id": "chapitre-1",
+      "title": "Je me teste : chapitre 1",
+      "shuffleQuestions": true,
+      "shuffleAnswers": true,
+      "questions": [
+        {
+          "id": "c1-q1",
+          "text": "Sophie appelle depuis Brest pour un PC lent. Tu travailles au support à Rennes. Quelle est la meilleure première utilisation du parc ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Lire sa fiche pour connaître le PC et préparer les vérifications."
+            },
+            {
+              "id": "r1",
+              "text": "Remplacer le PC à partir de son âge, sans autre contrôle."
+            },
+            {
+              "id": "r2",
+              "text": "Réserver un ordinateur de prêt avant de lui poser des questions."
+            }
+          ],
+          "correctAnswerId": "r0",
+          "explanation": "La fiche aide à identifier la machine et son contexte. Elle ne suffit pas à diagnostiquer la panne ni à décider un remplacement.",
+          "hint": "Relis la situation et compare les informations utiles."
+        },
+        {
+          "id": "c1-q2",
+          "text": "CyberNet suit 600 PC sur 12 sites. Pourquoi les fiches partagées deviennent-elles utiles ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Elles permettent d'éviter toute conversation avec les clients."
+            },
+            {
+              "id": "r1",
+              "text": "Elles donnent aux techniciens des informations même si le PC se trouve ailleurs."
+            },
+            {
+              "id": "r2",
+              "text": "Elles garantissent qu'aucun ordinateur ne tombera en panne."
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "Les fiches permettent aux techniciens de travailler à distance et de partager ce qu'ils savent.",
+          "hint": "Relis la situation et compare les informations utiles."
+        }
+      ]
+    },
+    {
+      "id": "chapitre-2",
+      "title": "Je me teste : chapitre 2",
+      "shuffleQuestions": true,
+      "shuffleAnswers": true,
+      "questions": [
+        {
+          "id": "c2-q1",
+          "text": "Dans l'extrait de REN-PC-01, quelles informations correspondent à la RAM et au SSD ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "RAM : 64 Go ; SSD : environ 2 To"
+            },
+            {
+              "id": "r1",
+              "text": "RAM : 32 Go ; SSD : environ 2 To"
+            },
+            {
+              "id": "r2",
+              "text": "RAM : 64 Go ; SSD : environ 512 Go"
+            }
+          ],
+          "correctAnswerId": "r0",
+          "explanation": "La fiche indique deux barrettes de 32 Go, soit 64 Go de RAM. Le SSD a une capacité d'environ 2 To.",
+          "hint": "Relis la situation et compare les informations utiles."
+        },
+        {
+          "id": "c2-q2",
+          "text": "Que montrent les dates de la fiche REN-PC-01 ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "La fiche a été créée et actualisée le 17 juillet 2026."
+            },
+            {
+              "id": "r1",
+              "text": "La fiche a été créée en juillet puis l'inventaire a été actualisé en octobre 2026."
+            },
+            {
+              "id": "r2",
+              "text": "Le PC a forcément été acheté le 29 octobre 2026."
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "La fiche a été créée le 17 juillet. Un nouvel inventaire est arrivé le 29 octobre : les informations techniques peuvent donc être mises à jour après la création.",
+          "hint": "Relis la situation et compare les informations utiles."
+        }
+      ]
+    },
+    {
+      "id": "chapitre-3",
+      "title": "Je me teste : chapitre 3",
+      "shuffleQuestions": true,
+      "shuffleAnswers": true,
+      "questions": [
+        {
+          "id": "c3-q1",
+          "text": "Une stagiaire doit saisir les équipements réseau d'un client. Quel accès lui donner ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Un compte personnel avec les droits utiles à cette saisie."
+            },
+            {
+              "id": "r1",
+              "text": "Le compte d'un technicien expérimenté déjà configuré."
+            },
+            {
+              "id": "r2",
+              "text": "Un compte administrateur pour éviter les blocages."
+            }
+          ],
+          "correctAnswerId": "r0",
+          "explanation": "Un compte personnel avec des droits adaptés permet de travailler et de retrouver qui a effectué les opérations.",
+          "hint": "Compare les conséquences de chaque choix pour le suivi du parc."
+        },
+        {
+          "id": "c3-q2",
+          "text": "Un salarié quitte l'entreprise vendredi. Que doit préparer le gestionnaire de parc ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "La restitution de ses équipements et la mise à jour des affectations."
+            },
+            {
+              "id": "r1",
+              "text": "La suppression des fiches de tous les équipements qu'il utilisait."
+            },
+            {
+              "id": "r2",
+              "text": "Le transfert automatique de ses droits au prochain salarié."
+            }
+          ],
+          "correctAnswerId": "r0",
+          "explanation": "Les équipements peuvent être réattribués. Le départ exige de suivre les restitutions et de revoir les accès, sans effacer l'historique du matériel.",
+          "hint": "Compare les conséquences de chaque choix pour le suivi du parc."
+        }
+      ]
+    },
+    {
+      "id": "chapitre-4",
+      "title": "Je me teste : chapitre 4",
+      "shuffleQuestions": true,
+      "shuffleAnswers": true,
+      "questions": [
+        {
+          "id": "c4-q1",
+          "text": "Camille doit planifier une intervention mardi de 14 h à 16 h. Alex est déjà chez un client jusqu'à 15 h. Que faire ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Affecter Alex et réduire la première intervention."
+            },
+            {
+              "id": "r1",
+              "text": "Rechercher un autre technicien compétent et disponible."
+            },
+            {
+              "id": "r2",
+              "text": "Ajouter la deuxième mission dans le planning sans changer la première."
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "Deux missions se chevauchent. Il faut ajuster les horaires avec les personnes concernées ou choisir une autre personne disponible.",
+          "hint": "Compare les conséquences de chaque choix pour le suivi du parc."
+        },
+        {
+          "id": "c4-q2",
+          "text": "Le calendrier de Samir est vide mercredi. Quelle vérification manque avant de lui confier une mission ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Son contrat de garantie informatique."
+            },
+            {
+              "id": "r1",
+              "text": "Ses congés, ses repos et ses éventuelles formations."
+            },
+            {
+              "id": "r2",
+              "text": "La date de livraison de son ordinateur portable."
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "Un agenda vide ne prouve pas la disponibilité. Les absences et les temps de repos doivent être pris en compte.",
+          "hint": "Compare les conséquences de chaque choix pour le suivi du parc."
+        }
+      ]
+    },
+    {
+      "id": "chapitre-5",
+      "title": "Je me teste : chapitre 5",
+      "shuffleQuestions": true,
+      "shuffleAnswers": true,
+      "questions": [
+        {
+          "id": "c5-q1",
+          "text": "Deux équipes ont réservé le même testeur de fibre sur des horaires qui se chevauchent. Que faire ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Confirmer les deux réservations et les laisser s'organiser sur place."
+            },
+            {
+              "id": "r1",
+              "text": "Vérifier les horaires et déplacer une réservation ou trouver un autre testeur."
+            },
+            {
+              "id": "r2",
+              "text": "Attribuer le testeur à l'équipe qui a la mission la plus longue, sans prévenir l'autre."
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "Il faut résoudre le conflit de disponibilité et prévenir les équipes avant de confirmer les interventions.",
+          "hint": "Compare les conséquences de chaque choix pour le suivi du parc."
+        },
+        {
+          "id": "c5-q2",
+          "text": "Le stock indique 7 modules SFP. Une intervention en consomme 2. Que doit indiquer le stock après la sortie ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "7, car le matériel appartient toujours à l'entreprise."
+            },
+            {
+              "id": "r1",
+              "text": "5, car deux modules ont été sortis du stock disponible."
+            },
+            {
+              "id": "r2",
+              "text": "2, car seuls les modules utilisés doivent être comptés."
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "Les deux modules sortis ne sont plus disponibles : 7 - 2 = 5. Le mouvement doit être enregistré.",
+          "hint": "Compare les conséquences de chaque choix pour le suivi du parc."
+        }
+      ]
+    },
+    {
+      "id": "chapitre-6",
+      "title": "Je me teste : chapitre 6",
+      "shuffleQuestions": true,
+      "shuffleAnswers": true,
+      "questions": [
+        {
+          "id": "c6-q1",
+          "text": "Une entreprise remplace chaque année 120 PC à 900 € pièce. Quel budget annuel d'achat doit-elle prévoir ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "90 000 €"
+            },
+            {
+              "id": "r1",
+              "text": "120 900 €"
+            },
+            {
+              "id": "r2",
+              "text": "108 000 €"
+            }
+          ],
+          "correctAnswerId": "r2",
+          "explanation": "Le budget d'achat est 120 × 900 €, soit 108 000 €, hors installation, logiciels et maintenance.",
+          "hint": "Compare les conséquences de chaque choix pour le suivi du parc."
+        },
+        {
+          "id": "c6-q2",
+          "text": "Un PC de quatre ans fonctionne bien, mais l'entreprise prévoit un renouvellement après cinq ans. Que décider ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Le remplacer immédiatement, car quatre ans suffisent toujours."
+            },
+            {
+              "id": "r1",
+              "text": "Vérifier son usage, son état et le calendrier de renouvellement avant de décider."
+            },
+            {
+              "id": "r2",
+              "text": "Le conserver sans contrôle jusqu'à sa panne."
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "La durée prévue donne un repère. La décision dépend aussi de l'état, de l'usage, des risques et du budget.",
+          "hint": "Compare les conséquences de chaque choix pour le suivi du parc."
+        }
+      ]
+    },
+    {
+      "id": "chapitre-7",
+      "title": "Je me teste : chapitre 7",
+      "shuffleQuestions": true,
+      "shuffleAnswers": true,
+      "questions": [
+        {
+          "id": "c7-q1",
+          "text": "Un port de switch n'a pas de destination indiquée. L'équipement doit être remplacé demain. Quelle préparation est la plus sûre ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Relever la liaison manquante et les services concernés."
+            },
+            {
+              "id": "r1",
+              "text": "Copier la documentation d'un autre switch du même modèle."
+            },
+            {
+              "id": "r2",
+              "text": "Préparer le nouveau switch uniquement à partir du nombre de ports."
+            }
+          ],
+          "correctAnswerId": "r0",
+          "explanation": "Le modèle ou le nombre de ports ne suffit pas : il faut identifier les connexions réelles pour limiter les interruptions.",
+          "hint": "Compare les conséquences de chaque choix pour le suivi du parc."
+        },
+        {
+          "id": "c7-q2",
+          "text": "Une liaison a été déplacée du port 8 au port 12 pendant une intervention. Quelle suite donner ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Mettre à jour la documentation et conserver la trace du changement."
+            },
+            {
+              "id": "r1",
+              "text": "Modifier uniquement le nom du switch dans l'inventaire."
+            },
+            {
+              "id": "r2",
+              "text": "Attendre le prochain inventaire annuel pour corriger les ports."
+            }
+          ],
+          "correctAnswerId": "r0",
+          "explanation": "Une documentation mise à jour immédiatement permet au prochain technicien de retrouver la connexion réelle.",
+          "hint": "Compare les conséquences de chaque choix pour le suivi du parc."
+        }
+      ]
+    },
+    {
+      "id": "chapitre-8",
+      "title": "Je me teste : chapitre 8",
+      "shuffleQuestions": true,
+      "shuffleAnswers": true,
+      "questions": [
+        {
+          "id": "c8-q1",
+          "text": "Camille te demande les PC à examiner d'abord pour le renouvellement. Que montre le tableau du cours ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "PC-011 et PC-105, car ils datent de 2020."
+            },
+            {
+              "id": "r1",
+              "text": "PC-011 et PC-076, car ils ont des pannes fréquentes."
+            },
+            {
+              "id": "r2",
+              "text": "PC-042 et PC-076, car ils sont utilisés chaque jour."
+            }
+          ],
+          "correctAnswerId": "r1",
+          "explanation": "PC-011 et PC-076 présentent des pannes fréquentes. Leur remplacement doit être étudié en priorité, sans décider automatiquement l'achat.",
+          "hint": "Relis la situation et compare les informations utiles."
+        },
+        {
+          "id": "c8-q2",
+          "text": "PC-105 date de 2020, fonctionne bien et sert rarement. Quelle conclusion est justifiée ?",
+          "answers": [
+            {
+              "id": "r0",
+              "text": "Son remplacement est nécessaire avant celui des PC en panne."
+            },
+            {
+              "id": "r1",
+              "text": "Il n'a plus besoin d'être suivi puisqu'il fonctionne."
+            },
+            {
+              "id": "r2",
+              "text": "Son âge ne suffit pas à le rendre prioritaire."
+            }
+          ],
+          "correctAnswerId": "r2",
+          "explanation": "Le PC est ancien, mais son état et son usage doivent aussi compter dans la décision.",
+          "hint": "Relis la situation et compare les informations utiles."
+        }
+      ]
+    }
+  ]
+}

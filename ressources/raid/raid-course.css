@@ -1,0 +1,622 @@
+:root{color-scheme:light;--bg:#f1f3f5;--paper:#fff;--ink:#182735;--muted:#4b6372;--edge:#d5dfe5;--accent:#135b78;--accent-ink:#fff;--pale:#e7f2f5;--green:#176b4c;--amber:#89590c;--danger:#a42c38;--track:#e7edf0;--tile:#ecf3f6;--nav:#112c3e;--sun:#f5be59;--shadow:0 10px 28px #14273710}
+@media(prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#101920;--paper:#192630;--ink:#eff6f8;--muted:#bacbd5;--edge:#39505d;--accent:#87cde2;--accent-ink:#102632;--pale:#203845;--green:#87d9aa;--amber:#f3c781;--danger:#ff9aa5;--track:#253a46;--tile:#263e4d;--nav:#09141c;--sun:#ffcf75;--shadow:none}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.56 system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{color:var(--accent);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.top{background:var(--nav);color:#f4f9fc;padding:12px 16px}.top-inner{max-width:1130px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font-size:.83rem;letter-spacing:.09em;font-weight:800;text-transform:uppercase}.home{border:1px solid #7294a3;color:white;padding:8px 12px;border-radius:9px;text-decoration:none;font-weight:650;font-size:.88rem}
+.hero{position:relative;overflow:hidden;min-height:390px;background:radial-gradient(circle at 85% 34%,#22657a 0,transparent 38%),linear-gradient(130deg,#102c3f,#08171f);color:#f6fbfd}.hero-inner{max-width:1130px;margin:auto;padding:58px 20px 48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.8fr);align-items:center;gap:20px}.eyebrow{font-size:.79rem;letter-spacing:.15em;font-weight:800;text-transform:uppercase;color:#9cdbde}.hero h1{font-weight:850;letter-spacing:-.04em;line-height:1.08;font-size:clamp(2.55rem,6vw,4.8rem);margin:15px 0 17px}.hero h1 em{font-style:normal;color:#f5bc56}.hero p{max-width:590px;color:#cfdee8;font-size:1.06rem}.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.action{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border-radius:9px;padding:9px 15px;text-decoration:none;font-weight:750;border:1px solid var(--edge);color:var(--ink);background:var(--paper)}.action.primary{background:var(--sun);color:#192632;border-color:transparent}.action.dark{background:transparent;color:#fff;border-color:#7e9ba8}
+.hero-device{border:1px solid #557b8b;background:#102b3bd9;border-radius:16px;padding:18px;transform:rotate(-2deg);box-shadow:0 18px 40px #0005}.device-top{display:flex;justify-content:space-between;font-size:.7rem;color:#b6d2e0;letter-spacing:.09em;text-transform:uppercase;margin-bottom:16px}.bays{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.bay{height:145px;border-radius:8px;background:linear-gradient(160deg,#38566a,#102d41);border:1px solid #618393;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:12px 5px}.bay .led{height:7px;width:7px;border-radius:50%;background:#75e4b5;box-shadow:0 0 9px #58dba5}.bay:nth-child(3) .led{background:#ffbc5b;box-shadow:0 0 9px #ffbc5b}.bay .slot{width:80%;height:7px;border-radius:3px;background:#819faa}.bay small{color:#cbdde6;font-size:.68rem}
+.wrap{max-width:1130px;margin:auto;padding:34px 17px 90px}.intro{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}.intro article{background:var(--paper);border:1px solid var(--edge);border-radius:14px;padding:20px}.intro h2{font-size:1.22rem;margin:0 0 8px}.intro p{margin:0}.mini{font-size:.89rem;color:var(--muted)}.roadmap{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 34px}.roadmap a{text-decoration:none;border:1px solid var(--edge);border-radius:50px;padding:8px 12px;background:var(--paper);font-weight:670;font-size:.85rem}.roadmap a:hover{background:var(--pale)}
+.chapter{scroll-margin-top:20px;margin:0 0 38px}.chapter-head{display:flex;align-items:center;gap:13px;margin-bottom:16px}.chapter-index{width:43px;height:43px;border:2px solid var(--accent);border-radius:12px;display:grid;place-items:center;font-size:1.07rem;font-weight:800;color:var(--accent);flex:none}.chapter-head h2{margin:0;font-size:clamp(1.5rem,3.2vw,2.25rem);letter-spacing:-.025em;line-height:1.15}.chapter-head p{margin:4px 0 0;color:var(--muted);font-size:.89rem}.panel{background:var(--paper);border:1px solid var(--edge);border-radius:14px;padding:clamp(16px,3vw,25px);margin-bottom:13px;box-shadow:var(--shadow)}.panel h3{font-size:1.16rem;margin:0 0 9px}.panel p{margin:8px 0 12px}.two{display:grid;grid-template-columns:1fr 1fr;gap:13px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.concept{padding:17px;border:1px solid var(--edge);border-radius:12px;background:var(--pale)}.concept strong{display:block;font-size:1.1rem}.concept p{margin:6px 0 0;font-size:.93rem}.tag{display:inline-block;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;padding:4px 7px;border-radius:5px;color:var(--accent);background:var(--pale)}.aside{border-left:4px solid var(--accent);padding:12px 14px;background:var(--pale);border-radius:0 9px 9px 0;margin-top:14px}.warn{border-left-color:var(--amber)}.tiny{font-size:.81rem;color:var(--muted)}
+.flowline{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;background:var(--pale);border-radius:12px;padding:24px 12px;margin:18px 0}.flow-unit{border:2px solid var(--edge);border-radius:10px;background:var(--paper);padding:10px 16px;text-align:center;min-width:110px}.flow-unit strong{display:block;font-size:1.1rem}.flow-arrow{color:var(--accent);font-size:1.45rem;font-weight:900}.example-file{padding:17px;display:flex;align-items:center;gap:14px;background:var(--pale);border-radius:10px}.file-icon{font-size:2rem}.file-meta{display:grid;line-height:1.3}.file-meta span{color:var(--muted);font-size:.88rem}
+.level-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.level-btn{border:2px solid var(--edge);background:var(--paper);color:var(--ink);border-radius:12px;padding:13px;text-align:left;min-height:86px}.level-btn strong{display:block;font-size:1.25rem}.level-btn small{display:block;color:var(--muted)}.level-btn[aria-pressed=true]{border-color:var(--accent);background:var(--pale)}.sim-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.sim-top p{margin:3px 0}.sim-led{font-size:.77rem;color:var(--green);font-weight:750}.sim-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:9px;margin-top:16px}.sim-disk{border:1px solid var(--edge);border-radius:11px;padding:12px;background:var(--tile);min-width:0}.sim-disk.off{opacity:.56;border-color:var(--danger)}.sim-disk h4{font-size:.84rem;margin:0 0 9px}.block{border-radius:4px;padding:6px 5px;text-align:center;font-size:.79rem;font-weight:800;margin:5px 0;min-height:30px;background:#d9eaf3;color:#15394f;border:1px solid #abc9db}.block.parity{background:#fae7c6;color:#6b420d;border-color:#e4c285}.block.mirror{background:#d4f2e5;color:#1a614a;border-color:#95cfb1}.block.empty{background:transparent;border-style:dashed;color:var(--muted)}.sim-disk.off .block{filter:grayscale(1)}.sim-note{font-size:.9rem;color:var(--muted)}.failure-actions{display:flex;gap:8px;flex-wrap:wrap}.failure-btn{border:1px solid var(--edge);background:var(--paper);color:var(--ink);border-radius:8px;padding:7px 10px;font-size:.85rem}.failure-btn[aria-pressed=true]{background:var(--danger);color:#fff;border-color:transparent}.sim-feedback{margin-top:13px;border:1px solid var(--edge);border-radius:8px;padding:11px 13px;background:var(--pale);font-weight:680}
+.tool-controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end}.tool-controls label{display:grid;gap:4px;font-size:.82rem;font-weight:780}.tool-controls input,.tool-controls select{border:1px solid var(--edge);border-radius:7px;min-height:42px;padding:8px;background:var(--paper);color:var(--ink)}.tool-controls input{width:98px}.tool-controls button,.quiz button{border:1px solid var(--accent);background:var(--pale);color:var(--ink);border-radius:8px;padding:9px 12px;min-height:42px;font-weight:730}.tool-controls button:hover,.quiz button:hover{background:var(--track)}.tool-disks{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:9px;margin:14px 0}.tool-disk{padding:11px;border:1px solid var(--edge);border-radius:10px;background:var(--tile);display:grid;gap:5px}.tool-disk.spare{border-color:var(--amber)}.tool-disk label{font-size:.82rem;font-weight:750}.tool-disk input,.tool-disk select{width:100%;min-width:0;border:1px solid var(--edge);border-radius:6px;min-height:38px;padding:6px;background:var(--paper);color:var(--ink)}.tool-disk button{min-height:36px;border:1px solid var(--edge);border-radius:6px;color:var(--ink);background:var(--paper)}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.metric{background:var(--pale);border-radius:9px;padding:13px}.metric b{display:block;font-size:clamp(1.2rem,2.8vw,1.7rem);font-variant-numeric:tabular-nums}.metric span{font-size:.8rem;color:var(--muted)}.capacity-bar{display:flex;height:23px;border-radius:5px;overflow:hidden;background:var(--track);margin:16px 0 8px}.capacity-bar i{display:block}.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.79rem;color:var(--muted)}.legend b{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:4px}.usable{background:#3487ba}.redundancy{background:#429a72}.unused{background:#cf963f}.sparebar{background:#9c9fa9}.status{font-weight:780;color:var(--green)}.status.error{color:var(--danger)}
+.quiz{background:var(--paper);border:1px solid var(--edge);border-radius:14px;padding:20px;margin:13px 0}.quiz h3{margin:0 0 8px}.quiz .choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}.quiz button{text-align:left;font-weight:600}.quiz button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink)}.quiz .reply{min-height:30px;margin:11px 0 0;font-weight:700}.quiz .reply.good{color:var(--green)}.quiz .reply.bad{color:var(--danger)}.comparison{overflow-x:auto}.comparison table{border-collapse:collapse;width:100%;min-width:570px}.comparison th,.comparison td{padding:10px;border-bottom:1px solid var(--edge);text-align:left}.comparison th{background:var(--pale)}.footer{background:var(--nav);color:#d6e5ed;padding:25px 17px}.footer-inner{max-width:1130px;margin:auto;font-size:.82rem}.footer a{color:#c9ebff}
+@media(max-width:770px){.hero-inner{grid-template-columns:1fr;padding-top:39px}.hero-device{max-width:450px;transform:none}.intro,.two{grid-template-columns:1fr}.three{grid-template-columns:1fr 1fr}.metrics{grid-template-columns:repeat(2,1fr)}.level-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){body{font-size:16px}.hero{min-height:0}.hero-inner{padding:30px 16px}.hero h1{font-size:2.6rem}.bay{height:105px}.wrap{padding:25px 11px 65px}.panel{padding:15px}.roadmap{gap:6px}.roadmap a{font-size:.78rem;padding:7px 9px}.three,.quiz .choices{grid-template-columns:1fr}.flow-unit{min-width:95px;padding:9px}.sim-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{padding:9px}.metric b{font-size:1.15rem}.level-btn{min-height:70px}.chapter-head h2{font-size:1.6rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+
+/* V2 : vue de face du NAS. Les tiroirs sont de vrais boutons, les réglages restent séparés. */
+.tool-disks{display:block;margin:17px auto 12px;max-width:790px}
+.nas-chassis{position:relative;background:linear-gradient(140deg,#343d45 0%,#151b20 42%,#343940 100%);color:#ecf0f1;border:3px solid #11191e;border-radius:21px;padding:14px clamp(10px,2.4vw,27px) 13px;box-shadow:inset 0 2px 2px #67717a,inset 0 -4px 8px #06080a,0 11px 23px #0003}
+.nas-chassis:before,.nas-chassis:after{content:"";position:absolute;bottom:-10px;background:#171b1f;width:36px;height:9px;border-radius:0 0 7px 7px}
+.nas-chassis:before{left:8%}.nas-chassis:after{right:8%}
+.nas-header,.nas-footer{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:.72rem;letter-spacing:.08em;font-weight:750}
+.nas-header{min-height:36px;margin-bottom:10px;padding:0 5px}
+.nas-brand{color:#c1ced7}.nas-power{color:#86dd9e;text-shadow:0 0 8px #21ab59}
+.nas-footer{color:#acbec7;min-height:29px;justify-content:center}
+.nas-slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(5px,1.2vw,12px);border:9px solid #10171c;border-radius:14px;padding:8px;background:#060a0e;box-shadow:inset 0 4px 14px #000,0 1px 0 #647078}
+.nas-tray{position:relative;display:flex;align-items:center;justify-content:flex-start;flex-direction:column;min-width:0;min-height:177px;padding:13px 4px 8px;border:1px solid #4a535d;border-radius:8px;background:linear-gradient(100deg,#272f35 0%,#3d4750 38%,#242c33 95%);color:#e4ecf1;box-shadow:inset 2px 0 2px #59636b,inset -3px 0 5px #13171a,0 3px 3px #0007;text-align:center;transition:transform .12s,border-color .12s}
+.nas-tray:hover{border-color:#9ab6c8;transform:translateY(-2px)}
+.nas-tray.is-selected{outline:3px solid #80cde5;outline-offset:1px;border-color:#bddfeb}
+.nas-tray.is-spare{border-color:#d9aa57}
+.nas-tray.is-spare .nas-led{background:#f1bd57;box-shadow:0 0 7px #f1bd57}
+.nas-tray .nas-led{width:8px;height:8px;border-radius:50%;background:#61d887;box-shadow:0 0 8px #4bd275;align-self:flex-start;margin-left:5px;margin-bottom:23px}
+.nas-tray strong{font-size:1.06rem;letter-spacing:.07em}
+.nas-cap{font-variant-numeric:tabular-nums;font-weight:700;font-size:.92rem;color:#d0e4ee}
+.nas-keyhole{width:17px;height:17px;border:3px solid #14191d;border-radius:50%;box-shadow:0 0 0 1px #707980,inset 0 0 0 2px #444f58;margin-top:auto;margin-bottom:12px;position:relative}
+.nas-keyhole:after{content:"";position:absolute;top:3px;left:5px;width:2px;height:5px;background:#8a939b;transform:rotate(25deg)}
+.nas-tray small{font-size:.65rem;font-weight:850;color:#abc7d4;letter-spacing:.09em}
+.nas-tray.is-spare small{color:#f2cc83}
+.nas-empty{border:1px dashed #465057;background:#161c21;box-shadow:none;color:#77848f;justify-content:center;letter-spacing:.1em;font-size:.75rem}
+.nas-empty:hover{transform:none;border-color:#465057}
+.tool-editor{background:var(--pale);border:1px solid var(--edge);border-radius:12px;padding:16px;max-width:790px;margin:0 auto 18px}
+.tool-editor strong{display:block}.tool-editor p{margin:3px 0 12px}
+.disk-controls{display:flex;flex-wrap:wrap;align-items:end;gap:10px}
+.disk-controls label{display:grid;gap:4px;font-size:.86rem;font-weight:750;flex:1 1 135px}
+.disk-controls input,.disk-controls select{background:var(--paper);color:var(--ink);border:1px solid var(--edge);border-radius:8px;min-height:44px;padding:8px;width:100%}
+.disk-controls button{background:var(--paper);color:var(--ink);border:1px solid var(--edge);border-radius:8px;min-height:44px;padding:8px 12px}
+.disk-controls button:hover{border-color:var(--danger)}
+@media(max-width:560px){.nas-chassis{padding:11px 9px;border-radius:16px}.nas-slots{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:7px;border-width:7px}.nas-tray{min-height:158px}.nas-header{margin-bottom:4px}.nas-tray .nas-led{margin-bottom:17px}.tool-editor{padding:12px}}
+@media(prefers-color-scheme:dark){.tool-editor{background:var(--pale)}.nas-chassis{box-shadow:inset 0 2px 2px #67717a,inset 0 -4px 8px #06080a,0 10px 20px #0008}}
+
+/* V3 : schémas courts pour comprendre le matériel avant le RAID. */
+.storage-figure{margin:17px 0;padding:16px;background:var(--pale);border:1px solid var(--edge);border-radius:12px}
+.storage-stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.storage-stage{position:relative;display:flex;align-items:center;flex-direction:column;gap:4px;min-width:0;padding:12px 8px;background:var(--paper);border:1px solid var(--edge);border-radius:10px;text-align:center}
+.storage-stage strong{font-size:.94rem}.storage-stage small{font-size:.75rem;line-height:1.3;color:var(--muted)}
+.stage-number{position:absolute;top:5px;left:8px;color:var(--muted);font-size:.75rem;font-weight:800}
+.storage-figure figcaption{text-align:center;font-size:.82rem;color:var(--muted);margin-top:12px}
+.disk-drawing{margin-top:16px;width:84px;height:78px;background:#344856;border:4px solid #647988;border-radius:7px;position:relative;box-shadow:inset 0 0 0 3px #1b323f}
+.disk-platter{position:absolute;left:12px;top:9px;width:48px;height:48px;background:repeating-radial-gradient(circle,#7d99ab 0 3px,#c0d0d8 4px 5px,#536f82 6px 8px);border-radius:50%}
+.disk-arm{position:absolute;left:39px;top:42px;height:5px;width:30px;transform:rotate(-31deg);background:#e9b75b;border-radius:4px}
+.partition-drawing{margin-top:16px;display:flex;width:94%;height:78px;background:#243d4d;border:4px solid #426779;border-radius:7px;gap:3px;padding:6px;align-items:stretch}
+.partition-drawing span{display:grid;place-items:center;font-size:.62rem;line-height:1.1;overflow-wrap:anywhere;background:#90c5da;color:#102b3c;border-radius:3px;padding:2px}
+.partition-drawing span:first-child{flex:3}.partition-drawing span:last-child{flex:2;background:#e9be78}
+.volume-drawing{margin-top:16px;width:94%;height:78px;padding:12px;background:var(--tile);border:1px solid var(--edge);border-radius:7px;display:grid;align-content:center;gap:9px;text-align:left}
+.drive-letter{font-size:1.5rem;font-weight:900;color:var(--accent)}.drive-meter{height:11px;background:var(--edge);border-radius:4px;overflow:hidden}.drive-meter i{display:block;width:64%;height:100%;background:#4c97b9}
+.files-drawing{margin-top:16px;height:78px;display:flex;align-items:center;justify-content:center;gap:3px}
+.file-folder{font-size:2.6rem}.file-sheet{align-self:end;margin-bottom:12px;font-size:.65rem;font-weight:800;color:#185478;background:#d8e9f4;border:1px solid #9fc1d8;border-radius:3px;padding:5px 3px}
+.hardware-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.hardware-card{margin:0;display:flex;flex-direction:column;gap:10px;border:1px solid var(--edge);border-radius:12px;background:var(--pale);padding:14px;min-width:0}
+.hardware-card figcaption strong{display:block;margin:0 0 4px}.hardware-card figcaption span{display:block;color:var(--muted);font-size:.85rem}
+.hardware-art{height:145px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hdd-art{max-width:164px;width:90%;margin:auto;height:125px;background:linear-gradient(145deg,#b6c2c9,#687b89);border:7px solid #3b505c;border-radius:11px;box-shadow:inset 0 0 0 3px #d7e3e8}
+.hdd-ring{position:absolute;width:77px;height:77px;border-radius:50%;background:repeating-radial-gradient(circle,#cad6dc 0 6px,#869eab 7px 8px,#c9d8df 9px 11px);border:4px solid #536a79}
+.hdd-head{width:75px;height:9px;background:#e0a948;transform:rotate(-34deg);position:absolute;left:52%;top:64%;border-radius:5px;transform-origin:left center}
+.sata-art{max-width:155px;width:85%;height:110px;margin:auto;flex-direction:column;color:#e3edf4;background:linear-gradient(125deg,#263b4a,#0f212e);border:6px solid #405563;border-radius:12px;box-shadow:inset 0 1px 0 #8394a1}
+.sata-art span{font-size:2rem;font-weight:850;letter-spacing:.12em}.sata-art small{font-size:.9rem;color:#acc8d9}.sata-art i{position:absolute;bottom:2px;width:65px;height:4px;background:#d9af66}
+.nvme-art{height:125px}.nvme-board{width:95%;max-width:194px;height:51px;border:3px solid #3f7b55;background:#185037;display:flex;gap:7px;align-items:center;padding:5px 11px;border-radius:4px;transform:rotate(-8deg);box-shadow:8px 9px 12px #0002;position:relative}
+.nvme-board i{height:31px;flex:1;background:#192b2f;border:1px solid #749987;border-radius:3px}.nvme-board b{position:absolute;top:2px;left:10px;font-size:.56rem;color:#e8efeb}.nvme-board:after{content:"";position:absolute;right:4px;width:5px;height:6px;border:1px solid #c2c8bd;border-radius:50%}
+.spare-lesson{margin-top:14px}.spare-explainer{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(140px,1fr);gap:14px;align-items:center;background:var(--pale);border-radius:11px;padding:15px;margin:12px 0}
+.spare-mini-nas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;background:#182229;border:8px solid #303e46;border-radius:11px;padding:10px;min-height:103px}
+.spare-mini-tray{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:75px;border:1px solid #71818a;border-radius:5px;background:linear-gradient(100deg,#364550,#202d37);color:#f1f6f8;font-size:.85rem;font-weight:800}
+.spare-mini-tray small{font-size:.55rem;letter-spacing:.02em;color:#91e4b2}
+.spare-mini-wait{border-color:#e9b760}.spare-mini-wait small{color:#f9d18a}
+.spare-key{font-size:.9rem;line-height:1.45}.spare-key strong{display:block}.spare-key span{display:block;margin-top:6px}
+.usecase-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 14px}
+.usecase{background:var(--paper);border:1px solid var(--edge);border-radius:12px;padding:18px}
+.usecase h3{font-size:1.12rem;margin:10px 0}.usecase p{margin:7px 0}
+.raid-reference{margin:14px 0;border:1px solid var(--edge);border-radius:10px;background:var(--paper);overflow:hidden}
+.raid-reference>summary{cursor:pointer;padding:14px 17px;font-weight:800}.raid-reference>.comparison{padding:8px 15px 15px}
+.tool-controls button:disabled{opacity:.5;cursor:not-allowed}
+.nas-slots{grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;border-width:7px}
+.nas-tray{min-height:114px;padding:8px 3px 6px}
+.nas-tray .nas-led{margin-bottom:10px;width:7px;height:7px}
+.nas-tray strong{font-size:.91rem}.nas-cap{font-size:.82rem}
+.nas-keyhole{width:12px;height:12px;border-width:2px;margin-bottom:7px}.nas-keyhole:after{left:3px;top:2px;height:4px}
+.nas-tray small{font-size:.58rem}
+.nas-empty{min-height:114px}
+@media(max-width:780px){.storage-stages{grid-template-columns:repeat(2,minmax(0,1fr))}.hardware-grid,.usecase-grid{grid-template-columns:1fr}.hardware-card{display:grid;grid-template-columns:minmax(110px,160px) 1fr;align-items:center}.hardware-art{max-height:115px}.nas-slots{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:560px){.nas-slots{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;padding:5px;border-width:6px}.nas-tray{min-height:90px;padding:6px 3px 5px}.nas-empty{min-height:90px}.nas-tray .nas-led{margin-bottom:5px}.nas-keyhole{margin-bottom:4px}.storage-figure{padding:9px}.storage-stages{gap:7px}.storage-stage{padding:10px 4px 9px}.disk-drawing,.partition-drawing,.volume-drawing,.files-drawing{margin-top:18px}.storage-stage small{font-size:.7rem}.hardware-card{grid-template-columns:minmax(100px,126px) 1fr;gap:10px;padding:10px}.hardware-card figcaption span{font-size:.81rem}.spare-explainer{grid-template-columns:1fr;padding:9px}.spare-mini-nas{padding:7px;gap:5px}.usecase{padding:14px}}
+
+/* V4 : boitier NAS identifiable, volume 3D et facade inspiree des NAS de bureau. */
+.tool-disks{padding:8px 27px 18px 0;overflow:visible}
+.nas-chassis{
+  isolation:isolate;position:relative;overflow:visible;
+  border:3px solid #101317;border-bottom-width:7px;
+  border-radius:23px 23px 13px 13px;
+  padding:14px clamp(10px,2vw,21px) 8px;
+  background:linear-gradient(164deg,#41474c 0%,#252a2f 30%,#171b20 72%,#32363b 100%);
+  box-shadow:inset 0 3px 2px #737a7f,inset 0 -7px 11px #0a0d10,0 18px 24px #0004;
+}
+.nas-chassis::before{content:"";position:absolute;z-index:-1;left:auto;right:-27px;top:21px;bottom:1px;width:29px;height:auto;
+  background:linear-gradient(90deg,#272b31 0%,#14191e 60%,#373c40 100%);
+  transform:skewY(-16deg);transform-origin:left top;border-radius:0 13px 11px 0;border:2px solid #101418;box-shadow:7px 10px 18px #0004}
+.nas-chassis::after{content:"";position:absolute;z-index:-2;left:8%;right:auto;bottom:-16px;width:38px;height:12px;
+  background:linear-gradient(#16191c,#090b0d);border-radius:0 0 8px 8px;box-shadow:490px 0 0 #0d1013}
+.nas-header{display:grid;grid-template-columns:minmax(70px,1fr) auto 44px;gap:9px;min-height:43px;align-items:center;padding:0 5px 8px;margin-bottom:6px}
+.nas-brand{font:700 clamp(15px,2.2vw,23px)/1.1 Arial,Helvetica,sans-serif;letter-spacing:-.045em;color:#e0e4e6;text-shadow:0 1px 1px #000b}
+.nas-indicators{display:flex;align-items:center;justify-content:center;gap:clamp(6px,1.5vw,17px);min-width:0}
+.nas-indicator{display:flex;gap:4px;align-items:center;white-space:nowrap;font-size:clamp(8px,.85vw,10px);font-weight:650;letter-spacing:.01em;color:#d1d8dc}
+.nas-indicator-led{display:inline-block;flex:none;width:7px;height:7px;border-radius:2px;background:#161a1d;border:1px solid #626a6e;box-shadow:inset 0 0 2px #000}
+.nas-indicator-led.on{background:#8bdb55;border-color:#b1ee83;box-shadow:0 0 5px #72d348a9}
+.nas-power-button{display:grid;place-items:center;width:39px;height:27px;border:2px solid #0e151a;border-radius:6px;background:linear-gradient(#323a42,#151b20);color:#68b7fa;font:bold 23px/1 Arial;box-shadow:inset 0 1px 2px #89949b,0 1px 1px #000}
+.nas-slots{border-radius:14px 14px 10px 10px;border:8px solid #111619;box-shadow:inset 0 6px 12px #000,0 2px 0 #667077}
+.nas-tray{background:linear-gradient(105deg,#3a4148,#242b32 45%,#343940 87%,#1c2328);box-shadow:inset 2px 0 2px #5e656a,inset -3px 0 4px #101518,0 3px 3px #000a}
+.nas-footer{min-height:24px;justify-content:flex-end;padding-right:5px;letter-spacing:.02em;color:#b4babe}
+@media(max-width:740px){
+  .nas-header{grid-template-columns:minmax(65px,1fr) auto 35px;gap:5px}
+  .nas-brand{font-size:clamp(14px,3vw,19px)}
+  .nas-indicators{gap:6px}
+  .nas-indicator{font-size:8px;gap:3px}
+  .nas-indicator-led{width:5px;height:5px}
+  .nas-power-button{width:31px;height:26px;font-size:20px}
+}
+@media(max-width:480px){
+  .tool-disks{padding-right:15px;margin-top:11px}
+  .nas-chassis{padding:9px 7px 5px;border-radius:15px 15px 9px 9px}
+  .nas-chassis::before{right:-15px;width:17px;top:14px}
+  .nas-chassis::after{bottom:-12px;width:24px;height:8px;box-shadow:200px 0 0 #0d1013}
+  .nas-header{grid-template-columns:1fr auto;grid-template-areas:"brand power" "indicators indicators";row-gap:5px;min-height:0}
+  .nas-brand{grid-area:brand;font-size:17px}
+  .nas-indicators{grid-area:indicators;justify-content:space-between;padding:0 2px}
+  .nas-indicator{font-size:9px;gap:4px}
+  .nas-power-button{grid-area:power;justify-self:end;width:33px;height:25px}
+  .nas-slots{border-width:5px}
+  .nas-footer{font-size:.66rem}
+}
+@media(prefers-color-scheme:dark){
+  .nas-chassis{box-shadow:inset 0 3px 2px #737a7f,inset 0 -7px 11px #0a0d10,0 18px 28px #0009}
+}
+
+/* Pieds indépendants : toujours placés sous les deux coins du boitier. */
+.nas-chassis::after{content:none}
+.nas-feet{position:absolute;inset:auto 6% -15px;display:flex;justify-content:space-between;pointer-events:none}
+.nas-feet i{display:block;width:clamp(25px,6vw,42px);height:11px;border-radius:0 0 8px 8px;background:linear-gradient(#1c2226,#080b0e);box-shadow:0 3px 5px #0005}
+@media(max-width:480px){.nas-feet{bottom:-11px}.nas-feet i{width:24px;height:8px}}
+
+/* Chapitre 1 : laboratoire progressif, sans dessin jetable entre les etapes. */
+.storage-lab{border:1px solid var(--edge);border-radius:14px;background:var(--pale);padding:clamp(12px,2.4vw,21px);margin:16px 0}
+.storage-lab-top{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-bottom:13px}
+.storage-lab-top strong{font-size:1.06rem}.storage-lab-top>span{color:var(--muted);font-size:.82rem;white-space:nowrap}
+.storage-lab-scene{display:grid;grid-template-columns:minmax(0,1fr) 90px;gap:16px;align-items:center;max-width:760px;margin:auto}
+.storage-machine{position:relative;padding:14px;background:linear-gradient(145deg,#334957,#172c38);border:4px solid #7896a6;border-radius:15px;min-width:0;min-height:188px;box-shadow:inset 0 0 0 3px #1b3541,0 9px 15px #0002;color:#f4fbff}
+.storage-machine-head{display:flex;justify-content:space-between;align-items:center;font-size:.76rem;font-weight:850;letter-spacing:.11em;margin-bottom:12px}
+.storage-machine-dot{width:8px;height:8px;background:#7cdda9;border-radius:50%;box-shadow:0 0 8px #63d9a1}
+.storage-platter{height:136px;display:grid;place-items:center;position:relative}
+.storage-platter-circle{width:120px;height:120px;border-radius:50%;background:repeating-radial-gradient(circle,#cadde5 0 5px,#718fa2 6px 9px,#bdd3df 10px 12px);border:6px solid #54738a;box-shadow:0 0 0 3px #d0e2ea}
+.storage-platter-circle:after{content:"";display:block;width:19px;height:19px;border-radius:50%;background:#344e60;position:relative;top:calc(50% - 9px);left:calc(50% - 9px);border:3px solid #c4d9e2}
+.storage-platter-arm{width:70px;height:9px;border-radius:9px;background:#e4b864;transform:rotate(-36deg);position:absolute;left:50%;top:75%;transform-origin:left center}
+.storage-partitions{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;min-height:136px}
+.storage-partition{min-width:0;padding:8px 5px;border-radius:7px;background:#326d9a;border:2px solid #89b8d5;display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;gap:7px}
+.storage-partition:nth-child(2){background:#32796b;border-color:#a3dbc6}
+.storage-partition:nth-child(3){background:#735e93;border-color:#d1b6e3}
+.storage-partition>small{font-size:clamp(10px,1.2vw,13px);font-weight:800;text-align:center;color:#fff}
+.storage-volume{display:none;align-items:center;flex-direction:column;justify-content:center;gap:8px;min-height:83px;border:2px solid #f1f6fc;border-radius:6px;background:#e5f2f7;color:#143f57;padding:5px 2px}
+.storage-volume>b{font-size:clamp(20px,3vw,28px);line-height:1}
+.storage-docs{display:none;justify-content:center;gap:4px;flex-wrap:wrap}
+.storage-docs>i{background:#fff;border:1px solid #7cabc1;border-radius:3px;padding:4px 3px;font-size:clamp(8px,1vw,11px);font-weight:750;font-style:normal}
+.storage-usb{opacity:0;visibility:hidden;display:flex;align-items:center;flex-direction:column;gap:4px;color:var(--ink);font-size:.9rem;transition:opacity .25s}
+.storage-usb-device{position:relative;width:48px;height:108px;background:linear-gradient(110deg,#598ea4,#23546b);border:3px solid #1e485c;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#f1f8fa;font-size:.68rem;font-weight:750}
+.storage-usb-tip{position:absolute;top:-22px;width:28px;height:26px;border-radius:3px 3px 0 0;border:3px solid #8197a6;background:linear-gradient(#d1dbe2,#8aabbc)}
+.storage-usb strong{font-size:1.2rem;color:var(--accent)}
+.storage-usb small{font-size:.76rem;color:var(--muted);text-align:center}
+.storage-lab[data-step="2"] .storage-partitions,.storage-lab[data-step="3"] .storage-partitions,.storage-lab[data-step="4"] .storage-partitions,.storage-lab[data-step="5"] .storage-partitions{display:grid}
+.storage-lab[data-step="2"] .storage-platter,.storage-lab[data-step="3"] .storage-platter,.storage-lab[data-step="4"] .storage-platter,.storage-lab[data-step="5"] .storage-platter{display:none}
+.storage-lab[data-step="3"] .storage-volume,.storage-lab[data-step="4"] .storage-volume,.storage-lab[data-step="5"] .storage-volume{display:flex}
+.storage-lab[data-step="4"] .storage-docs,.storage-lab[data-step="5"] .storage-docs{display:flex}
+.storage-lab[data-step="4"] .storage-volume,.storage-lab[data-step="5"] .storage-volume{gap:5px}
+.storage-lab[data-step="5"] .storage-usb{opacity:1;visibility:visible}
+.storage-lab-message{min-height:53px;margin:14px 0 7px;padding:10px 13px;background:var(--paper);border-radius:9px;border-left:4px solid var(--accent)}
+.storage-lab-controls{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.storage-lab-controls>button,.storage-step-picks button{border:1px solid var(--edge);background:var(--paper);color:var(--ink);border-radius:8px;min-width:44px;min-height:44px;font-weight:750}
+.storage-lab-controls>button{padding:8px 13px}
+.storage-lab-controls button:disabled{opacity:.4;cursor:not-allowed}
+.storage-step-picks{display:flex;gap:5px;justify-content:center}
+.storage-step-picks button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.storage-lab-legend{font-size:.8rem;color:var(--muted);margin-top:10px}
+.hardware-detailed .hardware-card{min-width:0}
+.hardware-detailed .hardware-art{height:auto;min-height:155px;max-height:none;overflow:visible;padding:6px;background:var(--paper);border-radius:10px}
+.hardware-detailed .hardware-svg svg{display:block;width:100%;max-width:320px;height:auto;aspect-ratio:320/220;overflow:visible;color:var(--ink)}
+.hardware-detailed .hardware-card figcaption span{line-height:1.4}
+@media(max-width:770px){.hardware-detailed .hardware-card{display:grid;grid-template-columns:minmax(128px,44%) 1fr}.hardware-detailed .hardware-art{min-height:100px}.hardware-detailed .hardware-card figcaption{align-self:center}}
+@media(max-width:520px){.storage-lab-scene{grid-template-columns:minmax(0,1fr) 49px;gap:7px}.storage-machine{padding:9px 6px;border-width:3px;min-height:166px}.storage-partitions{gap:3px;min-height:122px}.storage-partition{padding:6px 2px;border-width:1px;gap:5px}.storage-partition>small{font-size:9px}.storage-volume{min-height:79px}.storage-volume>b{font-size:21px}.storage-docs{gap:2px}.storage-docs>i{font-size:8px;padding:3px 2px}.storage-usb-device{width:33px;height:83px;font-size:.52rem}.storage-usb-tip{width:22px;height:21px;top:-18px}.storage-usb small{font-size:.61rem}.storage-step-picks{order:-1;width:100%;justify-content:center}.storage-lab-controls>button{flex:1}.storage-lab-top strong{font-size:.96rem}.storage-lab-top>span{font-size:.75rem}.hardware-detailed .hardware-card{grid-template-columns:minmax(105px,42%) 1fr;gap:8px;padding:9px}.hardware-detailed .hardware-art{min-height:0;padding:2px}.hardware-detailed .hardware-card figcaption span{font-size:.81rem}}
+@media(prefers-reduced-motion:reduce){.storage-usb{transition:none}}
+
+/* Simulateur bloc par bloc : bleu données, orange P, vert Q comme le schéma du professeur. */
+#simulateur .level-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+#simulateur .level-btn{min-height:74px}
+#simulateur .sim-legend{display:flex;gap:15px;flex-wrap:wrap;margin:14px 0 8px;font-size:.84rem}
+#simulateur .sim-legend>span{display:inline-flex;align-items:center;gap:6px}
+#simulateur .sim-swatch{display:inline-block;width:16px;height:16px;border-radius:4px;border:1px solid #164d73}
+#simulateur .swatch-data{background:#1469de}
+#simulateur .swatch-p{background:#ff8b23;border-color:#a9520d}
+#simulateur .swatch-q{background:#25b968;border-color:#127541}
+#simulateur .sim-grid{grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:9px}
+#simulateur .sim-disk{background:#14384b;border:2px solid #31728b;border-radius:13px;padding:10px;color:#f4faff}
+#simulateur .sim-disk h4{color:#f4faff}
+#simulateur .sim-disk .block{border-radius:16px / 9px;min-height:34px;padding:8px 4px;margin:5px 0;background:linear-gradient(180deg,#34a1ff 0%,#1167dd 45%,#0645b5 100%);color:#fff;border:1px solid #5ab5ff;box-shadow:inset 0 3px 0 #9bd4ff88,0 2px 2px #0003;font-size:.82rem}
+#simulateur .sim-disk .block.parity-p{background:linear-gradient(180deg,#ffbd57,#ff8618 46%,#d85504);border-color:#ffd195;box-shadow:inset 0 3px 0 #ffe3a488,0 2px 2px #0003;color:#281607}
+#simulateur .sim-disk .block.parity-q{background:linear-gradient(180deg,#70eb9c,#23b560 46%,#0d7b42);border-color:#9bf3b9;box-shadow:inset 0 3px 0 #b4ffd288,0 2px 2px #0003;color:#082815}
+#simulateur .sim-disk.off{opacity:.48;border-color:#ed6b6b;filter:grayscale(.72)}
+#simulateur .sim-disk.spare-disk{background:#394a56;border-color:#9baeb8}
+#simulateur .spare-label{font-size:.76rem;color:#e1ebf0;margin:0 0 8px;font-weight:750}
+#simulateur .spare-empty{border:2px dashed #b4c2ca;border-radius:10px;min-height:105px;display:grid;place-items:center;padding:12px 6px;text-align:center;color:#e4eef2;font-size:.78rem}
+#simulateur .sim-spare-controls{background:var(--pale);border:1px solid var(--edge);border-radius:10px;padding:10px 13px;margin-top:12px}
+#simulateur .sim-spare-controls[hidden]{display:none}
+#simulateur .sim-spare-option{font-weight:800;display:flex;gap:10px;align-items:center;cursor:pointer}
+#simulateur .sim-spare-option input{width:20px;height:20px;accent-color:#2376bc}
+#simulateur .sim-spare-controls p{margin:4px 0 0}
+#simulateur .spare-action{border:1px solid var(--accent);background:var(--pale);color:var(--ink);border-radius:8px;padding:11px 14px;margin-top:10px;font-weight:800;min-height:44px;cursor:pointer}
+#simulateur .spare-action:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:550px){#simulateur .level-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}#simulateur .level-btn{padding:9px 7px;min-height:64px}#simulateur .level-btn strong{font-size:1rem}#simulateur .level-btn small{font-size:.7rem}#simulateur .sim-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#simulateur .sim-legend{gap:9px}}
+
+/* Le parcours d'un fichier : démonstration de parité distribuée, responsive. */
+.file-raid-lab{border:1px solid var(--edge);border-radius:15px;padding:clamp(12px,2.5vw,20px);background:var(--pale);margin:18px 0}
+.file-raid-top{display:flex;justify-content:space-between;align-items:center;gap:9px;flex-wrap:wrap}
+.file-raid-switch{display:flex;gap:7px}
+.file-raid-switch button,.file-raid-controls button{border:1px solid var(--edge);border-radius:9px;min-height:44px;background:var(--paper);color:var(--ink);padding:8px 13px;font-weight:800;cursor:pointer}
+.file-raid-switch button[aria-pressed=true],.file-raid-dots button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.file-raid-count{font-size:.82rem;color:var(--muted);font-weight:750}
+.file-raid-lab h3{margin:14px 0 4px;font-size:1.13rem}
+.file-raid-explanation{min-height:65px;margin:4px 0 12px}
+.file-raid-workspace{background:var(--paper);border:1px solid var(--edge);border-radius:12px;padding:15px;min-height:220px;display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:13px}
+.file-raid-workspace [hidden]{display:none!important}
+.file-raid-original{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;min-height:175px}
+.file-raid-original span{font-size:3.3rem}
+.file-raid-original strong{font-size:1.25rem}
+.file-raid-original small{font-size:.83rem;color:var(--muted)}
+.file-raid-pieces{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}
+.file-raid-drives{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;align-items:stretch}
+.file-raid-drives:has(> :nth-child(4):last-child){grid-template-columns:repeat(4,minmax(0,1fr))}
+.file-raid-drive{display:flex;flex-direction:column;gap:6px;padding:9px 6px;border-radius:13px;background:#173748;border:2px solid #5d8da1;color:#fff;min-width:0}
+.file-raid-drive>strong{font-size:.78rem;text-align:center;min-height:38px;display:grid;place-items:center}
+.file-raid-drive.is-failed{border-color:#ff9292;background:#55424a}
+.file-raid-block{display:grid;place-items:center;min-width:0;min-height:37px;padding:4px;border-radius:20px / 10px;font-size:clamp(.75rem,2vw,.95rem);font-weight:800;text-align:center;background:linear-gradient(#48b5ff,#0561db 55%,#08429c);border:1px solid #a1d5ff;color:#fff;box-shadow:inset 0 3px 0 #ffffff44}
+.file-raid-p{background:linear-gradient(#ffcd6b,#ff8920 55%,#bb560a);border-color:#ffdd98;color:#241404}
+.file-raid-q{background:linear-gradient(#79f0a0,#23b966 55%,#08763b);border-color:#a8f4be;color:#092b17}
+.file-raid-lost{background:#707982;color:#fff;border:2px dashed #ecb2b7;box-shadow:none;font-size:1.1rem}
+.file-raid-result{border:1px solid #5bba81;border-radius:10px;padding:13px;background:var(--pale);display:flex;align-items:center;justify-content:center;gap:6px;flex-direction:column;text-align:center}
+.file-raid-result>span{font-weight:900;font-size:1.3rem;color:var(--green)}
+.file-raid-result small{color:var(--muted)}
+.file-raid-legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.8rem;color:var(--muted);margin:11px 0}
+.file-raid-legend span{display:flex;gap:5px;align-items:center}
+.file-swatch{width:15px;height:15px;border-radius:5px;display:inline-block;background:#1469de;border:1px solid #8cbbee}
+.file-swatch-p{background:#ff8b23;border-color:#bb600e}
+.file-swatch-q{background:#25b968;border-color:#127541}
+.file-swatch-failed{background:#707982;border:2px dashed #e3afb2}
+.file-raid-controls{display:flex;justify-content:space-between;align-items:center;gap:9px;flex-wrap:wrap}
+.file-raid-controls button:disabled{opacity:.45;cursor:not-allowed}
+.file-raid-dots{display:flex;gap:5px}
+.file-raid-dots button{min-width:42px;padding:7px;min-height:44px}
+.file-raid-switch button:focus-visible,.file-raid-controls button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:640px){.file-raid-drives{gap:4px}.file-raid-drive{padding:7px 3px;border-width:1px}.file-raid-drive>strong{font-size:.66rem;min-height:34px}.file-raid-block{min-height:32px;padding:3px 1px;font-size:.75rem}.file-raid-workspace{padding:8px;min-height:225px}.file-raid-pieces{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.file-raid-controls>.file-raid-dots{order:-1;justify-content:center;width:100%}.file-raid-controls>button{flex:1}}
+
+.file-raid-recovered{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:4px 0}
+.file-raid-recovered .file-raid-block{min-width:43px}
+.file-raid-recovered .file-raid-rebuilt{outline:2px solid #36ad70;outline-offset:2px}
+
+/* Photo continue : la même illustration reste lisible aux cinq étapes du chapitre 4. */
+#file-raid-lab .file-raid-workspace{align-items:center}
+#file-raid-lab .file-raid-photo-shell{width:min(100%,520px);display:flex;flex-direction:column;align-items:center;gap:7px}
+#file-raid-lab .file-raid-original,#file-raid-lab .file-raid-pieces{width:100%;aspect-ratio:4/3;max-height:390px;border-radius:10px;overflow:hidden;border:3px solid #6c9bad;box-shadow:0 5px 13px #0002}
+#file-raid-lab .file-raid-original{background-image:var(--file-raid-photo);background-size:cover;background-position:center}
+#file-raid-lab .file-raid-pieces{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:0}
+#file-raid-lab .file-raid-photo-tile{display:grid;place-items:center;position:relative;min-width:0;min-height:0;background-image:var(--file-raid-photo);background-size:400% 300%;background-repeat:no-repeat;border:1px solid #ffffffc9;transition:filter .2s}
+#file-raid-lab .file-raid-photo-tile b{font-size:clamp(.67rem,1.6vw,.9rem);line-height:1.3;color:#fff;background:#0c3147d9;border-radius:5px;padding:2px 6px;text-shadow:0 1px 2px #000}
+#file-raid-lab .file-raid-photo-tile.is-missing{background-image:none;background-color:#6b7280;border-color:#f3bbc2}
+#file-raid-lab .file-raid-photo-tile.is-missing b{font-size:1.15rem;background:#4e5963}
+#file-raid-lab .file-raid-photo-tile.is-restored{outline:3px solid #29bd73;outline-offset:-4px;z-index:1}
+#file-raid-lab .file-raid-photo-caption{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap;justify-content:center;text-align:center}
+#file-raid-lab .file-raid-photo-caption strong{font-weight:850}
+#file-raid-lab .file-raid-photo-caption small{color:var(--muted);font-size:.8rem}
+#file-raid-lab .file-raid-photo-shell.is-compact{width:min(100%,330px)}
+#file-raid-lab .file-raid-photo-shell.is-compact .file-raid-original,#file-raid-lab .file-raid-photo-shell.is-compact .file-raid-pieces{max-height:248px}
+#file-raid-lab .file-raid-drive .file-raid-data{display:flex;align-items:center;flex-direction:column;justify-content:center;gap:3px;min-height:52px}
+#file-raid-lab .file-raid-mini-photo{width:min(100%,60px);aspect-ratio:4/3;height:auto;border-radius:3px;border:1px solid #ffffffc9;display:block;background-image:var(--file-raid-photo);background-size:400% 300%;background-repeat:no-repeat}
+#file-raid-lab .file-raid-recovered .file-raid-mini-photo{width:46px;height:auto}
+@media(max-width:640px){
+ #file-raid-lab .file-raid-photo-shell{width:min(100%,410px)}
+ #file-raid-lab .file-raid-photo-shell.is-compact{width:min(100%,245px)}
+ #file-raid-lab .file-raid-drive .file-raid-data{min-height:41px;padding:3px 1px;gap:2px}
+ #file-raid-lab .file-raid-mini-photo{width:min(100%,35px);height:auto;aspect-ratio:4/3}
+ #file-raid-lab .file-raid-photo-tile b{font-size:.65rem;padding:1px 4px}
+}
+@media(prefers-reduced-motion:reduce){#file-raid-lab .file-raid-photo-tile{transition:none}}
+
+/* Photo RAID : vignettes intégrales, sans boîtes bleues qui masquent les morceaux. */
+#file-raid-lab .file-raid-workspace{gap:12px}
+#file-raid-lab .file-raid-drives{width:100%;gap:8px}
+#file-raid-lab .file-raid-drive{padding:9px 7px;gap:7px}
+#file-raid-lab .file-raid-drive .file-raid-data{
+ appearance:none;cursor:pointer;display:flex;flex-direction:column;gap:0;align-items:stretch;
+ justify-content:flex-start;padding:2px;min-width:0;min-height:0;width:100%;
+ border:2px solid #88c5e0;border-radius:8px;background:#0e2836;overflow:hidden;box-shadow:none;color:white;
+}
+#file-raid-lab .file-raid-drive .file-raid-mini-photo{
+ display:block;width:100%;height:auto;max-width:none;aspect-ratio:1/1;
+ background-image:var(--file-raid-photo);background-size:400% 300%;background-repeat:no-repeat;
+ border:0;border-radius:4px 4px 0 0;flex:none;
+}
+#file-raid-lab .file-raid-drive .file-raid-data>b{
+ display:block;font-size:.83rem;line-height:1.4;padding:2px 3px;min-width:0;
+ color:#fff;background:#153c53;text-align:center;border-radius:0 0 4px 4px;
+}
+#file-raid-lab .file-raid-recovered .file-raid-mini-photo{
+ width:100%;height:auto;aspect-ratio:1/1;max-width:none;
+}
+#file-raid-lab .file-raid-recovered .file-raid-data{width:72px;padding:2px;background:#153c53;border-radius:7px;overflow:hidden;color:#fff}
+#file-raid-lab .file-raid-recovered .file-raid-data>b{display:block;text-align:center}
+#file-raid-lab .file-raid-photo-tile{appearance:none;cursor:pointer;padding:0;border-radius:0;font:inherit}
+#file-raid-lab .file-raid-photo-tile:focus-visible,
+#file-raid-lab .file-raid-data:focus-visible{outline:3px solid #ffd34c;outline-offset:2px;z-index:3}
+#file-raid-lab .file-raid-photo-tile.is-matched{outline:4px solid #ffd34c;outline-offset:-4px;z-index:2}
+#file-raid-lab .file-raid-data.is-matched{border-color:#ffd34c;box-shadow:0 0 0 3px #ffd34c}
+#file-raid-lab .file-raid-photo-tile.is-matched b,
+#file-raid-lab .file-raid-data.is-matched b{background:#66500a;color:#fff}
+#file-raid-lab .file-raid-selection{
+ margin:0;width:100%;border:1px solid var(--edge);border-radius:8px;
+ padding:9px 12px;background:var(--pale);font-size:.85rem;text-align:center;color:var(--ink);
+}
+#file-raid-lab .file-raid-selection[hidden]{display:none!important}
+@media(max-width:640px){
+ #file-raid-lab .file-raid-drives{gap:4px}
+ #file-raid-lab .file-raid-drive{gap:5px;padding:7px 3px}
+ #file-raid-lab .file-raid-drive .file-raid-data{padding:1px;border-width:1px}
+ #file-raid-lab .file-raid-drive .file-raid-data>b{font-size:.72rem}
+ #file-raid-lab .file-raid-photo-tile.is-matched{outline-width:3px}
+ #file-raid-lab .file-raid-recovered .file-raid-data{width:59px}
+}
+
+/* Correction: le morceau de photo occupe 100% du carre, sans bande bleue. */
+#file-raid-lab .file-raid-drive .file-raid-data,
+#file-raid-lab .file-raid-recovered .file-raid-data{
+ position:relative;display:block;flex:none;align-self:stretch;
+ padding:0;margin:0;min-height:0;height:auto;aspect-ratio:1/1;
+ background-image:var(--file-raid-photo);background-size:400% 300%;background-repeat:no-repeat;
+ border:2px solid #88c5e0;border-radius:6px;overflow:hidden;
+}
+#file-raid-lab .file-raid-drive .file-raid-data>b,
+#file-raid-lab .file-raid-recovered .file-raid-data>b{
+ position:absolute;right:3px;bottom:3px;left:auto;top:auto;
+ display:block;width:auto;min-width:0;margin:0;padding:1px 4px;
+ font-size:.72rem;line-height:1.15;font-weight:850;
+ color:#fff;background:#14354bd9;border-radius:4px;
+}
+#file-raid-lab .file-raid-drive .file-raid-data.is-matched>b,
+#file-raid-lab .file-raid-recovered .file-raid-data.is-matched>b{background:#66500a}
+@media(max-width:640px){
+ #file-raid-lab .file-raid-drive .file-raid-data>b,
+ #file-raid-lab .file-raid-recovered .file-raid-data>b{right:1px;bottom:1px;padding:0 3px;font-size:.65rem}
+}
+
+/* Parités pédagogiques : les miniatures désignent les sources du calcul, pas des copies. */
+#file-raid-lab .file-raid-drive{
+ display:grid;grid-template-rows:36px repeat(4,minmax(0,auto));
+ align-content:start;align-items:stretch;
+}
+#file-raid-lab .file-raid-drive .file-raid-parity{
+ display:flex;flex-direction:column;justify-content:center;align-items:stretch;
+ gap:4px;min-width:0;min-height:0;height:auto;padding:5px 4px 6px;
+ border-radius:8px;box-shadow:none;
+}
+#file-raid-lab .file-raid-parity>b{
+ font-size:.87rem;line-height:1.1;text-align:center;
+}
+#file-raid-lab .file-raid-parity-caption{
+ font-size:.66rem;line-height:1.15;text-align:center;
+ font-weight:750;white-space:nowrap;
+}
+#file-raid-lab .file-raid-parity-sources{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;width:100%;min-width:0;
+}
+#file-raid-lab .file-raid-parity-source{
+ display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0;
+}
+#file-raid-lab .file-raid-parity-mini{
+ display:block;width:100%;aspect-ratio:1/1;min-width:0;
+ background-image:var(--file-raid-photo);background-size:400% 300%;
+ background-repeat:no-repeat;border:1px solid #ffffffa6;border-radius:3px;
+}
+#file-raid-lab .file-raid-parity-source em{
+ font-style:normal;font-size:.62rem;line-height:1.1;font-weight:800;
+}
+#file-raid-lab .file-raid-parity.is-related{
+ outline:3px solid #ffd34c;outline-offset:1px;
+}
+#file-raid-lab .file-raid-parity-note{
+ margin:5px 0 8px;font-size:.78rem;color:var(--muted);
+}
+@media(max-width:640px){
+ #file-raid-lab .file-raid-drive{
+  grid-template-rows:32px repeat(4,minmax(0,auto));
+  padding:6px 3px;gap:5px;
+ }
+ #file-raid-lab .file-raid-drive .file-raid-parity{
+  padding:4px 2px;gap:3px;border-radius:6px;
+ }
+ #file-raid-lab .file-raid-parity>b{font-size:.72rem}
+ #file-raid-lab .file-raid-parity-caption{
+  font-size:.54rem;white-space:normal;line-height:1;
+ }
+ #file-raid-lab .file-raid-parity-sources{gap:1px}
+ #file-raid-lab .file-raid-parity-mini{border-width:1px;border-radius:2px}
+ #file-raid-lab .file-raid-parity-source em{font-size:.48rem}
+}
+
+/* Version du cours, discrète et visible dans le bandeau inférieur. */
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:10px 24px;flex-wrap:wrap}
+.footer .course-version{font-size:.8rem;font-weight:700;color:#d6e5ed;white-space:nowrap}
+
+
+/* Chapitre 2 : aide au choix, sans doublonner le simulateur du chapitre 3. */
+.raid-choice-intro{margin:0 0 16px;padding:14px 17px;border:1px solid var(--edge);border-radius:12px;background:var(--pale)}
+.raid-choice-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;align-items:stretch}
+.raid-choice-card{min-width:0;display:flex;flex-direction:column;gap:10px;padding:17px 15px 14px;border-radius:14px;border:1px solid var(--edge);background:var(--paper);box-shadow:var(--shadow)}
+.raid-choice-card-head{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.raid-choice-badge{display:inline-block;color:#fff;background:#173c51;border-radius:7px;padding:5px 10px;font-weight:850;font-size:1.03rem}
+.raid-choice-purpose{font-size:.77rem;color:var(--muted);font-weight:750}
+.raid-choice-card h3{font-size:1.08rem;line-height:1.25;margin:3px 0 0}
+.raid-choice-card>p{font-size:.88rem;line-height:1.45;margin:0;color:var(--ink)}
+.raid-choice-numbers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-top:auto;padding-top:10px}
+.raid-choice-numbers>div{display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:space-between;gap:6px;padding:9px 3px;border-radius:8px;background:var(--pale)}
+.raid-choice-numbers small{font-size:.69rem;line-height:1.2;color:var(--muted)}
+.raid-choice-numbers strong{font-size:clamp(.89rem,1.5vw,1.1rem);white-space:nowrap}
+.raid-choice-space{display:flex;width:100%;height:13px;overflow:hidden;border-radius:50px;border:1px solid var(--edge);background:var(--track)}
+.raid-choice-space-data{display:block;background:#248aca}
+.raid-choice-space-protection{display:block;background:#ef9f40}
+.raid-choice-card>p.raid-choice-pro{border-top:1px solid var(--edge);padding-top:10px}
+.raid-choice-card>p.raid-choice-con{color:var(--muted)}
+.raid-choice-key{display:flex;flex-wrap:wrap;gap:10px 22px;margin:12px 0 18px;font-size:.79rem;color:var(--muted)}
+.raid-choice-key>span{display:flex;align-items:center;gap:7px}
+.raid-choice-key i{display:inline-block;width:17px;height:13px;border-radius:4px}
+.raid-choice-key-data{background:#248aca}
+.raid-choice-key-protection{background:#ef9f40}
+@media(max-width:850px){.raid-choice-cards{grid-template-columns:1fr}.raid-choice-card{gap:9px}.raid-choice-card h3{font-size:1.12rem}.raid-choice-numbers{margin-top:0;gap:8px}.raid-choice-numbers small{font-size:.77rem}.raid-choice-numbers strong{font-size:1.22rem}}
+@media(max-width:480px){.raid-choice-card{padding:13px}.raid-choice-numbers{gap:5px}.raid-choice-numbers strong{font-size:1.02rem}.raid-choice-numbers small{font-size:.69rem}}
+
+/* Chapitre 6 : exemples de configurations RAID dans les machines professionnelles. */
+.raid-pro-roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:16px 0}
+.raid-pro-roles>div{padding:12px 13px;border:1px solid var(--edge);border-radius:10px;background:var(--pale)}
+.raid-pro-roles strong{font-size:.94rem}
+.raid-pro-roles p{font-size:.83rem;line-height:1.45;margin:5px 0 0;color:var(--muted)}
+.raid-pro-cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0 20px}
+.raid-pro-case{display:flex;flex-direction:column;gap:9px;min-width:0}
+.raid-pro-case h3{font-size:1.13rem;margin:0}
+.raid-pro-case p{margin:0;font-size:.88rem;line-height:1.48}
+.raid-pro-case .tiny{margin-top:auto;color:var(--muted)}
+.raid-pro-arrangement{display:flex;align-items:stretch;justify-content:center;flex-wrap:wrap;gap:5px;padding:12px 7px;border:1px solid var(--edge);border-radius:10px;background:var(--pale)}
+.raid-pro-set{min-width:80px;max-width:125px;flex:1 1 80px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:#174663;border:1px solid #6db5d4;border-radius:8px;padding:10px 6px;text-align:center;color:#fff}
+.raid-pro-set strong{font-size:1rem;line-height:1.1}
+.raid-pro-set small{font-size:.76rem;color:#d2ebf9}
+.raid-pro-set em{font-size:.73rem;font-style:normal;font-weight:750;color:#fff}
+.raid-pro-data{background:#1d6b55;border-color:#74d0a7}
+.raid-pro-spare{background:#744a16;border-color:#e3ad58}
+.raid-pro-plus{align-self:center;font-size:1.28rem;font-weight:800;color:var(--ink)}
+@media(max-width:740px){.raid-pro-cases{grid-template-columns:1fr}.raid-pro-roles{grid-template-columns:1fr}.raid-pro-roles>div{padding:10px 12px}}
+@media(max-width:410px){.raid-pro-arrangement{padding:9px 4px;gap:4px}.raid-pro-set{min-width:66px;flex-basis:66px;padding:8px 3px}.raid-pro-set strong{font-size:.91rem}.raid-pro-set small,.raid-pro-set em{font-size:.66rem}.raid-pro-plus{font-size:1rem}}
+
+/* Atelier central RAID : comparaison des configurations du NAS physique. */
+.raid-workshop{padding-bottom:21px}
+.raid-compare-title{margin:24px 0 5px!important}
+.raid-compare-legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin:12px 0;font-size:.78rem;color:var(--muted)}
+.raid-compare-legend span{display:inline-flex;align-items:center;gap:6px}
+.raid-compare-legend i{display:inline-block;width:13px;height:13px;border-radius:3px}
+.raid-comparator{display:grid;gap:8px}
+.raid-compare-row{width:100%;display:grid;grid-template-columns:minmax(130px,190px) minmax(0,1fr);gap:15px;align-items:center;text-align:left;border:1px solid var(--edge);background:var(--paper);color:var(--ink);border-radius:11px;padding:11px 13px;min-height:64px}
+.raid-compare-row:not(:disabled):hover{background:var(--pale)}
+.raid-compare-row.is-active{border:2px solid var(--accent);background:var(--pale);padding:10px 12px}
+.raid-compare-row:disabled{opacity:.6;cursor:not-allowed}
+.raid-compare-head{display:flex;flex-direction:column;gap:2px;min-width:0}
+.raid-compare-head strong{font-size:.96rem}
+.raid-compare-head small{font-size:.74rem;line-height:1.3;color:var(--muted)}
+.raid-compare-track{display:flex;overflow:hidden;align-items:stretch;border-radius:7px;background:var(--track);height:32px;width:100%}
+.raid-compare-track>span:not(.raid-compare-impossible){display:flex;align-items:center;justify-content:center;min-width:0;overflow:hidden;white-space:nowrap;font-size:.73rem;font-weight:780;color:#152333}
+.raid-compare-track .usable,.raid-compare-legend .usable{background:#e8a43f}
+.raid-compare-track .redundancy,.raid-compare-legend .redundancy{background:#f2d6a0}
+.raid-compare-track .sparebar,.raid-compare-legend .sparebar{background:#8db4cc}
+.raid-compare-track .unused,.raid-compare-legend .unused{background:#c3d0d8}
+.raid-compare-impossible{font-size:.8rem;color:var(--muted);margin:auto}
+.raid-compare-detail{background:var(--pale);border:1px solid var(--edge);border-radius:12px;padding:15px 17px;margin-top:12px}
+.raid-compare-detail p{font-size:.88rem;margin:6px 0}
+.nas-tray.is-free:not(.is-selected){opacity:.68}
+@media(max-width:560px){.raid-compare-row{grid-template-columns:1fr;gap:7px;padding:10px;min-height:0}.raid-compare-row.is-active{padding:9px}.raid-compare-head{flex-direction:row;flex-wrap:wrap;justify-content:space-between;gap:5px}.raid-compare-head strong{font-size:.9rem}.raid-compare-head small{font-size:.7rem}.raid-compare-track{height:26px}.raid-compare-track>span:not(.raid-compare-impossible){font-size:.67rem}.raid-compare-detail{padding:12px}}
+
+/* Retour tactile et souris : chaque clic possède un état visible. */
+button:not(:disabled){transition:background-color .13s ease,border-color .13s ease,box-shadow .13s ease,transform .1s ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+button:not(:disabled):active{transform:scale(.975);filter:brightness(.91);box-shadow:inset 0 2px 7px #0002}
+button:not(:disabled):focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.raid-compare-row.is-active{box-shadow:inset 4px 0 0 var(--accent)}
+.nas-tray.is-selected{box-shadow:0 0 0 3px var(--sun)}
+@media(hover:hover){button:not(:disabled):hover{filter:brightness(.96)}}
+@media(prefers-reduced-motion:reduce){button:not(:disabled){transition:none}}
+
+/* Chapitre 3 : familles de RAID, spare et duel. */
+.raid-family{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
+.raid-family article{border:1px solid var(--edge);border-radius:11px;background:var(--pale);padding:13px;min-width:0}
+.raid-family article>strong{font-size:1.1rem;margin-right:8px}
+.raid-family-tag{display:inline-block;border-radius:5px;background:var(--paper);border:1px solid var(--edge);padding:2px 7px;font-size:.75rem;font-weight:700;color:var(--accent)}
+.raid-family p{font-size:.91rem;line-height:1.47}
+.raid-family small{font-size:.78rem;color:var(--muted)}
+.raid-spare-stages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:15px 0}
+.raid-spare-stages>div{border:1px solid var(--edge);border-radius:10px;background:var(--pale);padding:13px}
+.raid-stage-index{display:grid;place-items:center;border-radius:50%;width:26px;height:26px;background:var(--accent);color:var(--accent-ink);font-weight:800;margin-bottom:8px}
+.raid-spare-stages strong{display:block;font-size:.96rem}
+.raid-spare-stages p{font-size:.87rem;line-height:1.4}
+.raid-duel{margin:15px 0;border:1px solid var(--edge);border-radius:13px;background:var(--pale);padding:17px}
+.raid-duel-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:9px;font-size:.86rem;color:var(--muted)}
+.raid-duel-top strong{color:var(--ink)}
+.raid-duel-question{font-size:1.12rem;font-weight:750;line-height:1.45;margin:18px 0!important}
+.raid-duel-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.raid-duel-choices button{min-height:54px;background:var(--paper);color:var(--ink);border:2px solid var(--edge);border-radius:10px;font-weight:800;padding:9px}
+.raid-duel-choices button[aria-pressed=true]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.raid-duel-feedback{min-height:48px;font-weight:650;line-height:1.45;margin:13px 0!important}
+.raid-duel-feedback.good{color:var(--green)}
+.raid-duel-feedback.bad{color:var(--danger)}
+.raid-duel-actions{display:flex;justify-content:flex-end}
+.raid-duel-actions button{border:1px solid var(--accent);border-radius:9px;background:var(--accent);color:var(--accent-ink);font-weight:750;min-height:44px;padding:9px 15px}
+.raid-duel-actions button:disabled{opacity:.5;cursor:not-allowed}
+@media(max-width:660px){.raid-spare-stages{grid-template-columns:1fr}.raid-spare-stages>div{padding:11px 13px}.raid-stage-index{float:left;margin:0 11px 0 0}.raid-spare-stages p{margin:5px 0 0}}
+@media(max-width:480px){.raid-family{grid-template-columns:1fr}.raid-duel{padding:12px}.raid-duel-question{font-size:1rem}}
+
+/* Soufflets du cours, sur le modèle des cours DHCP et messagerie. */
+details.chapter{background:var(--paper);border:1px solid var(--edge);border-radius:14px;overflow:hidden;margin:0 0 13px;scroll-margin-top:14px}
+details.chapter>summary.chapter-head{display:flex;align-items:center;gap:13px;cursor:pointer;padding:16px 48px 16px 17px;margin:0;position:relative;list-style:none}
+details.chapter>summary.chapter-head::-webkit-details-marker{display:none}
+details.chapter>summary.chapter-head::after{content:"⌄";position:absolute;right:17px;top:50%;transform:translateY(-50%);font-size:1.7rem;font-weight:750;color:var(--accent);line-height:1}
+details.chapter[open]>summary.chapter-head::after{content:"⌃"}
+details.chapter[open]>summary.chapter-head{background:var(--pale);border-bottom:1px solid var(--edge)}
+details.chapter>.chapter-inside{padding:15px 17px 19px;min-width:0}
+details.chapter .panel{max-width:100%;min-width:0}
+details.nested-test{border:1px solid var(--edge);border-radius:11px;background:var(--pale);margin-top:19px;overflow:hidden}
+details.nested-test>summary{cursor:pointer;font-weight:800;font-size:1.06rem;padding:13px 18px;list-style:revert}
+details.nested-test[open]>summary{border-bottom:1px solid var(--edge)}
+.nested-test-content{padding:13px}
+.nested-test-content>.quiz{margin:0}
+.nested-test-content>.raid-duel{margin:0}
+.raid-family{grid-template-columns:repeat(3,minmax(0,1fr))}
+.raid-family article{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.raid-family article>strong{margin:0}
+.raid-family article .raid-family-tag{font-size:.72rem}
+.raid-family article p{margin:0 0 7px}
+.raid-family article small{margin-top:auto}
+.raid-vignette-button{width:100%;max-width:275px;padding:4px;background:var(--paper);border:1px solid var(--edge);border-radius:9px;cursor:zoom-in;align-self:center;transition:transform .16s ease,border-color .16s ease}
+.raid-vignette-button:hover{transform:scale(1.035);border-color:var(--accent)}
+.raid-vignette-button svg{display:block;width:100%;height:auto;aspect-ratio:320/152}
+.raid-thumb-link{stroke:var(--accent);stroke-width:2;fill:none;opacity:.75}
+.raid-thumb-title{fill:var(--ink);font-weight:800;font-size:14px}
+.raid-thumb-group{fill:var(--muted);font-size:10px;font-weight:750}
+.raid-thumb-disk{fill:#317da7;stroke:#145477;stroke-width:1.8}
+.raid-thumb-disk-top{fill:#71b6d8;stroke:#145477;stroke-width:1.6}
+.raid-thumb-data{fill:#fff;font-size:19px;font-weight:800}
+.raid-thumb-parity{fill:#ffe28c;font-size:19px;font-weight:800}
+.raid-thumb-num{fill:var(--ink);font-size:12px;font-weight:700}
+.raid-vignette-dialog{width:min(90vw,660px);max-height:90vh;overflow:auto;background:var(--paper);color:var(--ink);border:2px solid var(--accent);border-radius:16px;padding:20px;box-shadow:0 12px 55px #0007}
+.raid-vignette-dialog::backdrop{background:#000a}
+.raid-vignette-dialog h3{margin:0 0 8px}
+.raid-vignette-large svg{display:block;width:100%;height:auto;max-height:340px}
+.raid-vignette-dialog p{font-size:.97rem;line-height:1.48}
+.raid-vignette-close{float:right;border-radius:8px;background:var(--pale);color:var(--ink);border:1px solid var(--edge);padding:7px 12px}
+@media(max-width:800px){.raid-family{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.raid-family{grid-template-columns:1fr}.raid-family article{gap:5px}.raid-vignette-button{max-width:255px}details.chapter>summary.chapter-head{padding:13px 40px 13px 11px;gap:9px}details.chapter>.chapter-inside{padding:10px}details.chapter>summary.chapter-head::after{right:12px}}
+@media(prefers-reduced-motion:reduce){.raid-vignette-button{transition:none}.raid-vignette-button:hover{transform:none}}
+
+/* Barre de cours, comme les autres cours équipés de CoursPrint. */
+.course-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.course-actions .home{display:inline-flex;align-items:center;justify-content:center;min-height:42px}
+.projection-float{position:fixed;left:clamp(10px,2vw,22px);bottom:clamp(14px,3vh,27px);z-index:1000;display:flex;align-items:center;gap:9px;padding:11px 15px;border:2px solid #8bb7e3;border-radius:30px;background:#155b99;color:#fff;font:700 15px system-ui,sans-serif;box-shadow:0 4px 16px #0006;cursor:pointer}
+.projection-float svg{width:22px;height:22px;flex:none}
+.projection-float[aria-pressed="true"]{background:#96471e;border-color:#f2b27b}
+.projection-float:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+html.raid-presentation .hero,html.raid-presentation .footer{display:none}
+html.raid-presentation .wrap{max-width:100%;padding:12px clamp(10px,2vw,26px) 60px}
+html.raid-presentation main>details.chapter:not([open]){display:none}
+html.raid-presentation main>details.chapter[open]{width:100%;max-width:100%;margin:0}
+html.raid-presentation main>details.chapter[open]>.chapter-inside{font-size:clamp(23px,2.6vw,33px);line-height:1.48}
+html.raid-presentation main>details.chapter[open]>.chapter-inside p,
+html.raid-presentation main>details.chapter[open]>.chapter-inside li{font-size:inherit}
+html.raid-presentation main>details.chapter[open] summary.chapter-head h2{font-size:clamp(30px,3.6vw,46px)}
+html.raid-presentation main>details.chapter[open] .chapter-inside h3{font-size:clamp(27px,3vw,39px)}
+html.raid-presentation main>details.chapter[open] .tiny,
+html.raid-presentation main>details.chapter[open] .mini,
+html.raid-presentation main>details.chapter[open] small{font-size:clamp(17px,1.8vw,23px)}
+html.raid-presentation main>details.chapter[open] .raid-family{grid-template-columns:repeat(3,minmax(0,1fr))}
+html.raid-presentation main>details.chapter[open] .raid-family article p{font-size:clamp(18px,1.85vw,25px)}
+html.raid-presentation main>details.chapter[open] svg,
+html.raid-presentation main>details.chapter[open] img{max-width:100%}
+html.raid-presentation main>details.chapter[open] button{font-size:clamp(16px,1.6vw,23px)}
+@media(max-width:700px){html.raid-presentation main>details.chapter[open] .raid-family{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){html.raid-presentation main>details.chapter[open] .raid-family{grid-template-columns:1fr}.course-actions{gap:5px}.course-actions .home{font-size:.78rem;padding:7px}}
+/* Styles exploités aussi par le document isolé généré par CoursPrint. */
+@media print{
+ .hero,.intro,.roadmap,.projection-float,.course-actions,.nested-test,.raid-duel,
+ .raid-vignette-dialog,.course-version{display:none!important}
+ details.chapter>.chapter-inside{display:block!important;padding:5px 0 10px!important}
+ details.chapter>summary.chapter-head{display:flex!important;padding:9px 0!important}
+ details.chapter>summary.chapter-head::after{display:none!important}
+ .raid-vignette-button{display:none!important}
+ .raid-family{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
+/* Icône de diagnostic commune aux cours DHCP, DNS et messagerie. */
+.diagnostic-wrench{display:inline-block;width:1.05em;height:1.05em;vertical-align:-.12em;color:var(--accent);margin-left:.22em;flex:none}

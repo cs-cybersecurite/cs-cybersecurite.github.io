@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark"><meta name="description" content="Comprendre le RAID avec des disques interactifs, des pannes simulées et un calculateur.">
+<title>RAID : les données sous protection | CIEL</title>
+<link rel="stylesheet" href="./raid-course.css?v=22"><link rel="stylesheet" href="../coursprint/v1/coursprint.css?v=200"></head>
+<body><header class="top"><div class="top-inner"><div class="brand">CIEL / Stockage & sécurité</div><nav class="course-actions" aria-label="Outils du cours"><a class="home" href="/" aria-label="Retour au portail">Retour au portail</a></nav></div></header>
+<section class="hero"><div class="hero-inner"><div><span class="eyebrow">Cours interactif • 01 / Stockage</span><h1>Un disque lâche.<br><em>Et après ?</em></h1>
+<p>Une entreprise garde ses fichiers sur des disques. Mais que se passe-t-il si un disque casse ? Tu vas essayer plusieurs RAID et découvrir lesquels continuent à marcher.</p>
+<div class="hero-actions"><a class="action primary" href="#depart">Commencer le cours</a><a class="action dark" href="#atelier">Construire un RAID</a></div></div>
+<div class="hero-device" role="img" aria-label="Illustration d'un serveur de stockage avec quatre tiroirs à disques, dont un voyant orange"><div class="device-top"><span>Serveur de stockage</span><span>SYS / STORAGE</span></div><div class="bays"><div class="bay"><span class="led"></span><small>DISK 01</small><span class="slot"></span></div><div class="bay"><span class="led"></span><small>DISK 02</small><span class="slot"></span></div><div class="bay"><span class="led"></span><small>DISK 03</small><span class="slot"></span></div><div class="bay"><span class="led"></span><small>DISK 04</small><span class="slot"></span></div></div><p class="tiny" style="color:#c7dbe4;margin:13px 0 0">Un voyant orange ne signifie pas forcément que les fichiers sont perdus.</p></div></div></section>
+<main class="wrap">
+<details class="chapter" id="depart"><summary class="chapter-head"><span class="chapter-index">01</span><div><h2>Avant le RAID : les bases</h2><p>D'abord, quelques mots utiles.</p></div></summary><div class="chapter-inside">
+<div class="panel"><h3>Du disque jusqu'aux fichiers</h3>
+<p>Un seul disque peut afficher plusieurs lettres dans Windows. Construis le dessin pour voir comment.</p>
+<div class="storage-lab" id="storage-lab" data-step="1">
+<div class="storage-lab-top"><strong id="storage-stage-name">1. Le disque</strong><span id="storage-stage-counter">Étape 1 sur 5</span></div>
+<div class="storage-lab-scene">
+<div class="storage-machine">
+<div class="storage-machine-head"><span>DISQUE 0</span><span class="storage-machine-dot" aria-hidden="true"></span></div>
+<div class="storage-platter" aria-label="Disque physique entier"><span class="storage-platter-circle"></span><span class="storage-platter-arm"></span></div>
+<div class="storage-partitions">
+<div class="storage-partition"><small>Partition 1</small><div class="storage-volume"><b>C:</b><span class="storage-docs" aria-label="Fichiers"><i>PDF</i><i>JPG</i></span></div></div>
+<div class="storage-partition"><small>Partition 2</small><div class="storage-volume"><b>D:</b><span class="storage-docs" aria-label="Fichiers"><i>DOC</i><i>PDF</i></span></div></div>
+<div class="storage-partition"><small>Partition 3</small><div class="storage-volume"><b>E:</b><span class="storage-docs" aria-label="Fichiers"><i>JPG</i><i>MP4</i></span></div></div>
+</div>
+</div>
+<div class="storage-usb"><div class="storage-usb-device" aria-hidden="true"><span class="storage-usb-tip"></span><span>USB</span></div><strong>F:</strong><small>Clé USB</small></div>
+</div>
+<p class="storage-lab-message" id="storage-stage-message" aria-live="polite">Voici le disque. C'est le matériel qui garde les données.</p>
+<div class="storage-lab-controls"><button type="button" id="storage-prev" disabled>Retour</button><div class="storage-step-picks" role="group" aria-label="Choisir une étape"><button type="button" data-storage-step="1" aria-pressed="true">1</button><button type="button" data-storage-step="2" aria-pressed="false">2</button><button type="button" data-storage-step="3" aria-pressed="false">3</button><button type="button" data-storage-step="4" aria-pressed="false">4</button><button type="button" data-storage-step="5" aria-pressed="false">5</button></div><button type="button" id="storage-next">Suivant</button></div>
+<div class="storage-lab-legend">Le <strong>même disque</strong> reste à l'écran. On ajoute une notion à chaque étape.</div>
+</div>
+<p>Une <strong>partition</strong> est une partie du disque. Un <strong>volume</strong> est un espace que Windows peut afficher avec une lettre, comme C:. On peut créer plusieurs partitions sur un disque.</p>
+<p>Un <strong>système de fichiers</strong>, comme NTFS, aide Windows à ranger et retrouver les données. PDF, JPG et MP4 sont des <strong>formats de fichiers</strong>. Ce n'est pas la même chose.</p>
+<div class="aside"><strong>À retenir :</strong> dans cet exemple, chaque partition contient un volume. Une clé USB est un autre support, avec sa propre lettre. Plus tard, le RAID montrera aussi comment plusieurs disques peuvent former un seul volume.</div>
+</div>
+<div class="panel"><h3>HDD, SSD SATA, SSD NVMe : à quoi ça ressemble ?</h3>
+<div class="hardware-grid">
+<figure class="hardware-card"><div class="hardware-art hdd-art" role="img" aria-label="Disque dur mécanique rectangulaire, avec un plateau rond et un bras de lecture"><span class="hdd-ring"></span><span class="hdd-head"></span></div><figcaption><strong>HDD</strong><span>Disque avec des pièces qui tournent.</span></figcaption></figure>
+<figure class="hardware-card"><div class="hardware-art sata-art" role="img" aria-label="SSD SATA de 2,5 pouces dans un boîtier rectangulaire"><span>SSD</span><small>SATA 2,5"</small><i></i></div><figcaption><strong>SSD SATA</strong><span>Sans pièces mobiles. Souvent plus rapide qu'un HDD.</span></figcaption></figure>
+<figure class="hardware-card"><div class="hardware-art nvme-art" role="img" aria-label="Barrette SSD M.2 avec plusieurs puces de mémoire"><span class="nvme-board"><i></i><i></i><i></i><b>NVMe</b></span></div><figcaption><strong>SSD M.2 NVMe</strong><span>Petit format, connexion très rapide.</span></figcaption></figure>
+</div>
+<div class="aside warn"><strong>À retenir :</strong> HDD et SSD parlent du matériel. RAID explique comment plusieurs disques travaillent ensemble.</div></div>
+<details class="nested-test"><summary>Je me teste</summary><div class="nested-test-content"><div class="quiz" data-question="base"><h3>Dans Windows, à quoi correspond souvent C: ?</h3><div class="choices"><button data-answer="non">À un format de fichier</button><button data-answer="oui">À un volume de stockage</button><button data-answer="non">À une marque de disque</button><button data-answer="non">À un dossier Windows</button></div><p class="reply" aria-live="polite"></p></div></div></details></div></details>
+
+<details class="chapter" id="parite"><summary class="chapter-head"><span class="chapter-index">02</span><div><h2>Le parcours d'un fichier en RAID 5 et RAID 6</h2><p>Un seul fichier, des morceaux, puis une panne. Que se passe-t-il ?</p></div></summary><div class="chapter-inside">
+<div class="panel">
+<p>Nous allons suivre <strong>photo.jpg</strong>, un fichier enregistré sur le serveur. Nous observerons comment le RAID le protège, même si des disques tombent en panne.</p>
+<div class="file-raid-lab" id="file-raid-lab" aria-label="Animation du parcours d'un fichier en RAID">
+<div class="file-raid-top">
+<div class="file-raid-switch" role="group" aria-label="Choisir le RAID"><button type="button" id="file-raid-5" aria-pressed="true">RAID 5</button><button type="button" id="file-raid-6" aria-pressed="false">RAID 6</button></div>
+<span class="file-raid-count" id="file-raid-count">Étape 1 sur 5</span>
+</div>
+<h3 id="file-raid-title">1. Un fichier à enregistrer</h3>
+<p class="file-raid-explanation" id="file-raid-explanation" aria-live="polite">Voici notre fichier photo.jpg. Il doit être enregistré sur le RAID.</p>
+<div class="file-raid-workspace">
+<div class="file-raid-photo-shell" id="file-raid-photo-shell">
+<div class="file-raid-original" id="file-raid-original" role="img" aria-label="Photo du paysage, avant le découpage"></div>
+<div class="file-raid-pieces" id="file-raid-pieces" role="img" aria-label="La même photo, découpée en 12 morceaux" hidden></div>
+<div class="file-raid-photo-caption"><strong>photo.jpg</strong><small id="file-raid-photo-state">Le fichier entier</small></div>
+</div>
+<div class="file-raid-drives" id="file-raid-drives" hidden aria-label="Répartition des données et des parités sur les disques"></div>
+<p id="file-raid-selection" class="file-raid-selection" aria-live="polite" hidden></p>
+<p class="file-raid-parity-note">Dans P et Q, les miniatures indiquent les morceaux utilisés pour le calcul de la parité. Elles ne représentent pas des copies enregistrées.</p>
+<div class="file-raid-result" id="file-raid-result" hidden><span aria-hidden="true">✓</span><strong>photo.jpg reste accessible</strong><div id="file-raid-recovered" class="file-raid-recovered" aria-label="Morceaux du fichier retrouvés"></div><small id="file-raid-result-detail">Le RAID retrouve les morceaux qui manquent grâce aux informations encore présentes.</small></div>
+</div>
+<div class="file-raid-legend"><span><i class="file-swatch file-swatch-data"></i> Morceau du fichier</span><span><i class="file-swatch file-swatch-p"></i> Parité P</span><span><i class="file-swatch file-swatch-q"></i> Parité Q</span><span><i class="file-swatch file-swatch-failed"></i> Disque en panne</span></div>
+<div class="file-raid-controls"><button type="button" id="file-raid-prev" disabled>Retour</button><div id="file-raid-steps" class="file-raid-dots" role="group" aria-label="Choisir une étape"><button type="button" data-file-raid-step="1" aria-pressed="true">1</button><button type="button" data-file-raid-step="2" aria-pressed="false">2</button><button type="button" data-file-raid-step="3" aria-pressed="false">3</button><button type="button" data-file-raid-step="4" aria-pressed="false">4</button><button type="button" data-file-raid-step="5" aria-pressed="false">5</button></div><button type="button" id="file-raid-next">Suivant</button></div>
+</div>
+<div class="aside"><strong>À retenir :</strong> en RAID 5, le fichier reste accessible après la panne d'un disque. En RAID 6, il reste accessible après la panne de deux disques. Les informations de parité sont réparties entre les disques : aucun disque n'est réservé uniquement à la parité. <strong>Le RAID ne remplace pas une sauvegarde.</strong></div>
+<p class="tiny">Schéma pédagogique : les morceaux et les informations de parité représentent le fonctionnement du RAID, sans montrer les calculs binaires. Les disques en panne restent en panne : retrouver un fichier ne répare pas le matériel.</p>
+</div>
+<details class="nested-test"><summary>Je me teste</summary><div class="nested-test-content"><div class="quiz" data-question="parity"><h3>Dans le parcours de photo.jpg, à quoi sert le bloc P du RAID 5 ?</h3><div class="choices"><button data-answer="non">À conserver une deuxième photo complète</button><button data-answer="oui">À retrouver les morceaux d'un disque en panne</button><button data-answer="non">À augmenter la capacité des disques</button><button data-answer="non">À remplacer une sauvegarde</button></div><p class="reply" aria-live="polite"></p></div></div></details></div></details>
+
+<details class="chapter" id="simulateur"><summary class="chapter-head"><span class="chapter-index">03</span><div><h2>Les RAID, le spare et la sauvegarde</h2><p>Trois notions différentes pour un stockage efficace et fiable.</p></div></summary><div class="chapter-inside">
+<div class="panel">
+<h3>Les RAID : performances, protection… ou les deux</h3>
+<p>Plusieurs disques peuvent travailler ensemble. Selon le RAID choisi, on cherche à <strong>gagner en vitesse</strong>, à <strong>rester accessible quand un disque tombe en panne</strong>, ou à combiner les deux. Le RAID ne rend pas forcément les disques plus rapides dans toutes les situations.</p>
+<div class="raid-family">
+<article><strong>RAID 0</strong><span class="raid-family-tag">Vitesse</span><p>Les fichiers sont répartis sur plusieurs disques. Les performances peuvent augmenter, mais <strong>une panne suffit à perdre le volume</strong>.</p><small>Minimum technique : 2 disques</small></article>
+<article><strong>RAID 1</strong><span class="raid-family-tag">Miroir</span><p>Les mêmes données sont conservées sur plusieurs disques. Une copie permet de continuer en cas de panne d'un disque, tant qu'il reste une copie saine.</p><small>Minimum technique : 2 disques</small></article>
+<article><strong>RAID 5</strong><span class="raid-family-tag">Vitesse + protection</span><p>Les données sont réparties avec de la parité. Le RAID continue à fonctionner après <strong>une panne</strong> de disque.</p><small>Minimum technique : 3 disques</small></article>
+<article><strong>RAID 6</strong><span class="raid-family-tag">Protection renforcée</span><p>Il utilise deux informations de parité. Le RAID continue à fonctionner après <strong>deux pannes</strong> de disques.</p><small>Minimum technique : 4 disques</small></article>
+<article><strong>RAID 10</strong><span class="raid-family-tag">Miroirs + vitesse</span><p>Les données sont réparties entre des groupes de disques en miroir. Il peut être rapide et supporter plusieurs pannes si elles touchent des paires différentes.</p><small>Minimum technique : 4 disques</small></article>
+<article><strong>RAID 01</strong><span class="raid-family-tag">Répartition + miroir</span><p>Deux groupes de disques se recopient. Il peut être rapide, mais il supporte moins de combinaisons de pannes que RAID 10.</p><small>Minimum technique : 4 disques</small></article>
+</div>
+<p class="tiny">Les performances dépendent des disques, de la machine et du type d'utilisation. Aucun RAID ne rend une panne impossible.</p>
+</div>
+<div class="panel">
+<h3>Le spare : un disque prêt à prendre la relève</h3>
+<div class="raid-spare-stages">
+<div><span class="raid-stage-index">1</span><strong>En attente</strong><p>Le spare est installé, mais il ne stocke pas encore les données du RAID.</p></div>
+<div><span class="raid-stage-index">2</span><strong>Un disque tombe en panne</strong><p>Si le RAID reste accessible, le spare peut être utilisé pour reconstruire les données manquantes.</p></div>
+<div><span class="raid-stage-index">3</span><strong>Reconstruction</strong><p>Le NAS recopie ou recalcule les données. Cela peut prendre plusieurs heures. Il faut ensuite remplacer le disque défectueux.</p></div>
+</div>
+<div class="aside"><strong>Attention :</strong> le spare ne donne pas plus de place pour les fichiers. Il ne remplace pas une sauvegarde. Son utilisation dépend du NAS et de sa configuration.</div>
+</div>
+<div class="panel">
+<h3>Le duel : RAID contre sauvegarde</h3>
+<p>Le RAID peut améliorer les performances ou maintenir l'accès aux fichiers lors de certaines pannes. Une <strong>sauvegarde indépendante</strong> sert à retrouver les données après une suppression, une corruption ou une attaque.</p>
+<p>À chaque situation, choisis <strong>ce qui répond au problème</strong>. Les deux peuvent être utiles dans une entreprise, mais ils n'ont pas le même rôle.</p>
+<details class="nested-test"><summary>Je me teste</summary><div class="nested-test-content"><div class="raid-duel" id="raid-duel">
+<div class="raid-duel-top"><strong id="raid-duel-count">Situation 1 sur 4</strong><span id="raid-duel-score">0 bonne réponse</span></div>
+<p class="raid-duel-question" id="raid-duel-question"></p>
+<div class="raid-duel-choices" role="group" aria-label="Choisir la solution"><button type="button" data-duel-answer="raid">RAID</button><button type="button" data-duel-answer="backup">Sauvegarde</button></div>
+<p class="raid-duel-feedback" id="raid-duel-feedback" role="status" aria-live="polite"></p>
+<div class="raid-duel-actions"><button type="button" id="raid-duel-next" disabled>Situation suivante</button><button type="button" id="raid-duel-restart" hidden>Recommencer</button></div>
+</div></div></details>
+<div class="aside warn"><strong>À retenir :</strong> le RAID et la sauvegarde ne sont pas adversaires. Pour protéger une entreprise, ils sont <strong>complémentaires</strong>.</div>
+</div>
+</div></details>
+
+<details class="chapter" id="atelier"><summary class="chapter-head"><span class="chapter-index">04</span><div><h2>Équipe ton NAS, compare les RAID</h2><p>Ajoute tes disques, choisis leur taille et découvre les configurations possibles.</p></div></summary><div class="chapter-inside">
+<div class="panel raid-workshop">
+<div class="tool-controls"><button id="tool-add" type="button">+ Ajouter un disque</button><button id="tool-reset" type="button">Recommencer</button><span class="tiny">12 disques maximum</span></div>
+<p class="mini">Clique sur un tiroir du NAS pour choisir la capacité du disque ou le retirer. Tu peux installer des disques de tailles différentes.</p>
+<div id="tool-disks" class="tool-disks" aria-label="NAS physique et disques installés"></div>
+<div id="tool-editor" class="tool-editor" aria-live="off"></div>
+<h3 class="raid-compare-title">Ce que tu peux faire avec tes disques</h3>
+<p class="mini">Chaque ligne utilise tous les disques installés dans le NAS : ils participent au RAID ou sont affectés comme spare. Si le RAID n’est pas possible avec ces disques, il est indiqué comme non réalisable.</p>
+<div class="raid-compare-legend"><span><i class="usable"></i> Fichiers</span><span><i class="redundancy"></i> Protection</span><span><i class="sparebar"></i> Spare</span><span><i class="unused"></i> Capacité inutilisée</span></div>
+<div id="raid-comparator" class="raid-comparator" aria-label="Comparaison automatique des configurations RAID"></div>
+<p id="tool-status" class="status" role="status" aria-live="polite"></p>
+<div id="raid-compare-detail" class="raid-compare-detail" aria-live="polite"></div>
+<div class="aside"><strong>À retenir :</strong> tous les RAID ne demandent pas le même nombre de disques. Avec des capacités différentes, une partie de l'espace peut rester inutilisée. Le spare n'ajoute pas de capacité pour les fichiers. Les valeurs sont théoriques, avant formatage.</div>
+</div>
+<details class="nested-test"><summary>Je me teste</summary><div class="nested-test-content"><div class="quiz" data-question="spare"><h3>Un NAS contient 5 disques de 2 To. Tu compares RAID 5 et RAID 5 + spare. Quelle proposition est correcte ?</h3><div class="choices"><button data-answer="non">Le spare augmente la capacité pour les fichiers.</button><button data-answer="oui">Le spare réduit la capacité utile, mais il attend pour reconstruire après une panne.</button><button data-answer="non">Le spare remplace une sauvegarde.</button><button data-answer="non">Le RAID 5 + spare peut toujours supporter deux pannes simultanées.</button></div><p class="reply" aria-live="polite"></p></div></div></details>
+</div></details>
+
+<details class="chapter" id="choix"><summary class="chapter-head"><span class="chapter-index">05</span><div><h2>Le RAID dans les machines de l'entreprise</h2><p>Un serveur peut utiliser plusieurs groupes RAID : un pour son système, un autre pour les données.</p></div></summary><div class="chapter-inside">
+<div class="panel"><h3>Où rencontre-t-on le RAID ?</h3><p>Dans un <strong>serveur de fichiers</strong>, un <strong>NAS</strong>, un <strong>serveur de virtualisation</strong> ou certaines stations de travail. Le RAID sert à maintenir les données accessibles en cas de panne d'un disque. Il ne remplace pas une sauvegarde.</p>
+<div class="raid-pro-roles"><div><strong>Système</strong><p>Le système d'exploitation et les logiciels nécessaires au démarrage de la machine.</p></div><div><strong>Données</strong><p>Les dossiers partagés, les fichiers des utilisateurs ou les machines virtuelles.</p></div><div><strong>Spare (disque de secours)</strong><p>Un disque en attente pour remplacer un disque défaillant lors d'une reconstruction.</p></div></div>
+<p class="tiny">Les ensembles RAID doivent être créés et gérés par la machine ou son contrôleur. Toutes les machines ne permettent pas de créer plusieurs groupes RAID ou d'attribuer un spare à un groupe précis.</p></div>
+<h3>Des configurations professionnelles à reconnaître</h3>
+<div class="raid-pro-cases">
+<article class="panel raid-pro-case"><span class="tag">Petit serveur ou NAS</span><h3>RAID 1 pour le système</h3><div class="raid-pro-arrangement"><span class="raid-pro-set"><strong>RAID 1</strong><small>2 disques</small><em>Système</em></span></div><p>Deux disques identiques contiennent le système. Si l'un tombe en panne, le serveur peut continuer à fonctionner.</p><p class="tiny"><strong>Limite :</strong> les fichiers de travail nécessitent un stockage adapté et toujours une sauvegarde.</p></article>
+<article class="panel raid-pro-case"><span class="tag">Serveur compact</span><h3>Deux RAID 1 indépendants</h3><div class="raid-pro-arrangement"><span class="raid-pro-set"><strong>RAID 1</strong><small>2 disques</small><em>Système</em></span><span class="raid-pro-plus">+</span><span class="raid-pro-set"><strong>RAID 1</strong><small>2 disques</small><em>Données</em></span></div><p>Quatre disques : deux protègent le système, deux autres protègent les dossiers partagés. Chaque paire est indépendante.</p><p class="tiny"><strong>Intérêt :</strong> séparer le stockage du système et celui des utilisateurs.</p></article>
+<article class="panel raid-pro-case"><span class="tag">Serveur de fichiers</span><h3>RAID 1 + RAID 5 + spare</h3><div class="raid-pro-arrangement"><span class="raid-pro-set"><strong>RAID 1</strong><small>2 disques</small><em>Système</em></span><span class="raid-pro-plus">+</span><span class="raid-pro-set raid-pro-data"><strong>RAID 5</strong><small>4 disques</small><em>Données</em></span><span class="raid-pro-plus">+</span><span class="raid-pro-set raid-pro-spare"><strong>Spare</strong><small>1 disque</small><em>En attente</em></span></div><p>Le système est sur un miroir. Les dossiers de l'entreprise sont sur un RAID 5 distinct. Un spare adapté est prévu pour reconstruire le groupe de données après la panne d'un disque.</p><p class="tiny"><strong>Exemple :</strong> 7 emplacements occupés. Le RAID 5 supporte une panne de disque dans son groupe.</p></article>
+<article class="panel raid-pro-case"><span class="tag">NAS ou serveur plus exigeant</span><h3>RAID 1 + RAID 6 + spare</h3><div class="raid-pro-arrangement"><span class="raid-pro-set"><strong>RAID 1</strong><small>2 disques</small><em>Système</em></span><span class="raid-pro-plus">+</span><span class="raid-pro-set raid-pro-data"><strong>RAID 6</strong><small>5 disques</small><em>Données</em></span><span class="raid-pro-plus">+</span><span class="raid-pro-set raid-pro-spare"><strong>Spare</strong><small>1 disque</small><em>En attente</em></span></div><p>Le système reste séparé des données. Le RAID 6 des données supporte deux pannes de disques. Un spare est disponible pour commencer une reconstruction si la machine le permet.</p><p class="tiny"><strong>Exemple :</strong> 8 emplacements occupés. Le spare ne constitue pas une troisième parité.</p></article>
+</div>
+<div class="aside"><strong>Attention :</strong> « RAID 1 + RAID 6 + spare » désigne ici <strong>deux groupes RAID séparés</strong> et un disque de réserve, pas un nouveau niveau RAID. Le spare n'est pas une sauvegarde et ne protège pas les données avant la reconstruction. Vérifie les possibilités de la machine et du contrôleur.</div>
+<details class="raid-reference"><summary>Et les autres RAID ?</summary><div class="panel"><p><strong>RAID 0 :</strong> répartit les données sans protection contre une panne de disque.</p><p><strong>RAID 10 :</strong> associe des paires en miroir et une répartition des données. Il peut convenir à des charges qui demandent de bonnes performances.</p><p><strong>RAID 01 :</strong> plus rare, avec une résistance aux pannes différente de RAID 10.</p><p class="tiny">Ces exemples ne sont pas des règles universelles. Le matériel, le budget, la taille des disques, la disponibilité attendue et les sauvegardes guident le choix.</p></div></details>
+<details class="nested-test"><summary>Je me teste</summary><div class="nested-test-content"><div class="quiz" data-question="case"><h3>Une entreprise veut séparer le système du serveur et ses dossiers partagés. Elle veut supporter deux pannes dans le groupe de données et disposer d'un spare. Quelle configuration proposer ?</h3><div class="choices"><button data-answer="non">Un RAID 5 pour toute la machine</button><button data-answer="oui">RAID 1 pour le système + RAID 6 pour les données + spare</button><button data-answer="non">Un RAID 0 pour les données + spare</button><button data-answer="non">Un seul RAID 1 pour tous les disques</button></div><p class="reply" aria-live="polite"></p></div></div></details></div></details>
+
+<details class="chapter" id="synthese"><summary class="chapter-head"><span class="chapter-index">06</span><div><h2>Diagnostic professionnel <svg class="diagnostic-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 1.4 1.4l2.2-2.2a6 6 0 0 1-7.9 7.9l-6.6 6.6a2 2 0 0 1-2.8-2.8l6.6-6.6a6 6 0 0 1 7.9-7.9z"/></svg></h2></div></summary><div class="chapter-inside"></div></details>
+</main><button type="button" id="raid-projection" class="projection-float" aria-pressed="false" aria-label="Activer la projection" title="Activer la projection"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M12 17v4M8 21h8"/></svg><span class="projection-label">Projection</span></button><footer class="footer"><div class="footer-inner"><span>CIEL • Technologies de stockage et cybersécurité. Tu peux utiliser ce cours sans compte. <a href="#depart">Retour au début</a>.</span><span class="course-version" aria-label="Version du cours">Version 5.9</span></div></footer>
+<script src="../coursprint/v1/coursprint.js?v=200"></script><script>CoursPrint.init({toolbar:".course-actions",content:"main",title:"Cours RAID"});</script><script type="module" src="./raid-course.js?v=22"></script>
+</body></html>

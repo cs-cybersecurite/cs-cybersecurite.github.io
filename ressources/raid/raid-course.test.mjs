@@ -1,0 +1,284 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+import {calculateRaid,assessRaidFailures} from "./raid-core.js";
+const read=name=>readFileSync(new URL(name,import.meta.url),"utf8");
+const html=read("index.html"),css=read("raid-course.css"),js=read("raid-course.js"),engine=read("raid-core.js");
+test("cours sans tirets longs",()=>{
+ for(const [name,source] of Object.entries({html,css,js,engine}))
+  assert.doesNotMatch(source,/[—–]/,name);
+});
+test("parcours et ancres présents",()=>{
+ for(const id of ["depart","parite","simulateur","pannes","atelier","choix","synthese"])
+  assert.ok(html.includes('id="'+id+'"'),id);
+ assert.match(html,/viewport/);
+});
+test("mode sombre du navigateur et lisibilité tactile",()=>{
+ assert.match(css,/@media\(prefers-color-scheme:dark\)/);
+ assert.match(css,/@media\(max-width:480px\)/);
+ assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
+ assert.match(css,/focus-visible/);
+});
+test("calculateur et pannes utilisent exclusivement le moteur partagé",()=>{
+ assert.match(js,/import \{calculateRaid,assessRaidFailures\} from "\.\/raid-core\.js"/);
+ assert.match(js,/assessRaidFailures\(/);
+ assert.match(js,/calculateRaid\(/);
+ assert.doesNotMatch(js,/const factors=|function calculateRaid\(/);
+});
+test("calculs partagés cohérents",()=>{
+ const c={format:"raid-configuration",schemaVersion:1,level:"6",disks:[1,2,3,4].map(i=>({id:"d"+i,role:"active",capacityTB:2}))};
+ const r=calculateRaid(c);assert.equal(r.ok,true);assert.equal(r.value.capacitiesTB.usable,4);
+ const p=assessRaidFailures(c,["d1","d2"]);assert.equal(p.ok,true);assert.equal(p.value.available,true);
+});
+test("présence des mini-défis et contenus de base",()=>{
+ assert.equal((html.match(/class="quiz" data-question=/g)||[]).length,6);
+ for(const phrase of ["partition","volume","système de fichiers","NVMe","sauvegarde","RAID 01"])
+  assert.ok(html.includes(phrase),phrase);
+});
+
+test("NAS interactif V2 et réglage séparé",()=>{
+ assert.match(html,/id="tool-editor"/);
+ assert.match(js,/className="nas-chassis"/);
+ assert.match(js,/className="nas-slots"/);
+ assert.match(js,/className="nas-tray"/);
+ assert.match(js,/aria-pressed/);
+ assert.match(css,/\.nas-tray\.is-spare/);
+ assert.match(css,/grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
+});
+test("messages simples à l'écran",()=>{
+ assert.match(js,/Le RAID fonctionne encore/);
+ assert.match(js,/RAID indisponible/);
+ assert.doesNotMatch(js,/Volume indisponible|Volume toujours disponible|La redondance peut être diminuée/);
+ assert.match(html,/Clique sur un tiroir/);
+});
+
+test("V3 : quatre choix au défi RAID 5",()=>{
+ const block=html.match(/data-question="parity"[\s\S]*?<\/div><p class="reply"/)?.[0];
+ assert.ok(block,"défi 02 présent");
+ assert.equal((block.match(/data-answer=/g)||[]).length,4);
+});
+test("Chapitre 1 : animations de stockage progressives et accessibles",()=>{
+ for(const id of ["storage-lab","storage-stage-name","storage-stage-counter","storage-stage-message","storage-prev","storage-next"])
+  assert.ok(html.includes('id="'+id+'"'),id);
+ assert.equal((html.match(/data-storage-step="[1-5]"/g)||[]).length,5);
+ for(const letter of ["C:","D:","E:","F:"])assert.ok(html.includes(letter),letter);
+ assert.match(js,/function initStorageLab\(/);
+ assert.match(js,/root\.dataset\.step=String\(step\)/);
+ assert.match(js,/\$\("storage-next"\)\.addEventListener/);
+ assert.match(css,/\.storage-lab\[data-step="5"\] \.storage-usb/);
+ assert.match(css,/@media\(max-width:520px\)/);
+});
+test("Chapitre 1 : illustrations précédentes restaurées",()=>{
+ for(const id of ["hardware-grid","hdd-art","sata-art","nvme-art","hdd-ring","nvme-board"])
+  assert.ok(html.includes(id),id);
+ assert.doesNotMatch(html,/class="hardware-art hardware-svg"/);
+ assert.match(html,/Disque avec des pièces qui tournent/);
+ assert.match(css,/\.hdd-art/);
+ assert.match(css,/\.sata-art/);
+ assert.match(css,/\.nvme-art/);
+});
+test("Chapitre 1 : pas de métaphore de l'armoire",()=>{
+ assert.doesNotMatch(html,/le disque est une armoire|Imagine une armoire/);
+});
+test("V3 : le spare est expliqué avant le mini-défi",()=>{
+ assert.match(html,/spare \(disque de secours\)/);
+ assert.ok(html.indexOf("raid-comparator")<html.indexOf('data-question="spare"'));
+ assert.match(html,/Le spare n\x27ajoute pas de capacité/);
+});
+test("V3 : NAS limité à 12 disques, tiroirs compacts et noms uniformes",()=>{
+ assert.match(js,/if\(disks.length>=12\)return/);
+ assert.match(js,/add.disabled=disks.length>=12/);
+ assert.match(js,/const slots=disks.length<=4\?4/);
+ assert.match(js,/title.textContent=d.id;/);
+ assert.doesNotMatch(js,/d.id.toUpperCase\(\)/);
+ assert.match(css,/\.nas-tray\{min-height:114px/);
+ assert.match(css,/@media\(max-width:560px\)\{\.nas-slots/);
+});
+test("V3 : erreur aux mini-défis sans révéler la réponse",()=>{
+ assert.match(js,/Pas encore\. Essaie une autre réponse\./);
+ assert.match(js,/reply.textContent=good\?/);
+ assert.match(js,/if\(good\)\{for\(const x/);
+});
+test("Chapitre professionnel : configurations distinctes",()=>{
+ for(const term of ["Petit serveur ou NAS","RAID 1 + RAID 5 + spare","RAID 1 + RAID 6 + spare","RAID 10","RAID 01"])
+  assert.ok(html.includes(term),term);
+});
+
+test("V3 : quatre choix au mini-défi 01",()=>{
+ const block=html.match(/data-question="base"[\s\S]*?<\/div><p class="reply"/)?.[0];
+ assert.ok(block,"défi 01 présent");
+ assert.equal((block.match(/data-answer=/g)||[]).length,4);
+});
+
+test("V4 : façade NAS identifiable sans retirer les tiroirs interactifs",()=>{
+ assert.match(js,/brand.textContent="Synology"/);
+ assert.match(js,/nas-indicators/);
+ assert.match(js,/nas-power-button/);
+ assert.match(js,/nas-feet/);
+ assert.match(js,/indicators=\[\["STATUS"/);
+ assert.match(js,/\["ALERT","off"\]/);
+ assert.match(js,/\["LAN 1","on"\]/);
+ assert.match(js,/nas-tray/);
+ assert.match(css,/\.nas-chassis::before/);
+ assert.match(css,/\.nas-feet i/);
+ assert.match(css,/@media\(max-width:480px\)/);
+});
+
+test("Simulateur bloc par bloc : RAID 1, 5 et 6 uniquement",()=>{
+ const levels=js.match(/const levels=\[([\s\S]*?)\];/)?.[1];
+ assert.ok(levels);
+ assert.match(levels,/\["1","Miroir"\]/);
+ assert.match(levels,/\["5","Parité simple"\]/);
+ assert.match(levels,/\["6","Double parité"\]/);
+ assert.doesNotMatch(levels,/\["0"|\["10"|\["01"/);
+ assert.match(js,/const layouts=/);
+ assert.match(css,/\.swatch-data\{background:#1469de/);
+ assert.match(css,/\.swatch-p\{background:#ff8b23/);
+ assert.match(css,/\.swatch-q\{background:#25b968/);
+});
+test("Simulateur : spare facultatif et reconstruction pédagogique",()=>{
+ for(const id of ["sim-spare-controls","sim-spare-toggle","sim-spare-caption","sim-spare-actions"])
+  assert.ok(html.includes('id="'+id+'"'),id);
+ assert.match(js,/function initSimSpare\(/);
+ assert.match(js,/sparePhase="rebuilding"/);
+ assert.match(js,/sparePhase="done"/);
+ assert.match(js,/assessRaidFailures\(cfg\(selected,physical\)/);
+ assert.match(html,/reconstruction du spare est représentée étape par étape/);
+});
+test("Simulateur : 4 disques RAID 5, 5 disques RAID 6 et parités tournantes",()=>{
+ const source=js.match(/const layouts=(\{[\s\S]*?\});/)?.[1];
+ assert.ok(source,"schémas RAID présents");
+ const layouts=JSON.parse(source);
+ assert.equal(layouts["1"].length,2);
+ assert.equal(layouts["5"].length,4);
+ assert.equal(layouts["6"].length,5);
+ for(const [level,rows,expectedP,expectedQ] of [["5",layouts["5"],1,0],["6",layouts["6"],1,1]]){
+  assert.ok(rows.every(row=>row.length===4),"quatre bandes de données RAID "+level);
+  for(let stripe=0;stripe<4;stripe++){
+   const blocks=rows.map(row=>row[stripe]);
+   assert.equal(blocks.filter(block=>block==="P").length,expectedP,"parité P bande "+stripe);
+   assert.equal(blocks.filter(block=>block==="Q").length,expectedQ,"parité Q bande "+stripe);
+  }
+ }
+ assert.match(js,/minimum : trois/);
+ assert.match(js,/minimum : quatre/);
+});
+
+test("Chapitre 2 : suivre un seul fichier du RAID 5 au RAID 6",()=>{
+ assert.match(html,/Le parcours d'un fichier en RAID 5 et RAID 6/);
+ assert.match(html,/id="file-raid-lab"/);
+ for(const id of ["file-raid-5","file-raid-6","file-raid-drives","file-raid-original","file-raid-pieces","file-raid-result","file-raid-prev","file-raid-next"]){
+  assert.ok(html.includes('id="'+id+'"'),id);
+ }
+ assert.equal((html.match(/data-file-raid-step="[1-5]"/g)||[]).length,5);
+ assert.match(js,/function initFileRaidLab\(/);
+ assert.match(js,/initFileRaidLab\(\)/);
+ assert.match(js,/Array\.from\(\{length:12\}/);
+ assert.match(js,/const photoSvg=/);
+ assert.match(js,/encodeURIComponent\(photoSvg\)/);
+ assert.match(js,/function initFileRaidLab\(/);
+ assert.match(js,/setPhotoCrop\(tile,name\)/);
+ assert.match(js,/if\(isData\) setPhotoCrop\(block,name\)/);
+ assert.match(js,/const missing=missingFor\(matrix,breakdowns\)/);
+ assert.match(css,/background-size:400% 300%/);
+ assert.match(css,/grid-template-rows:repeat\(3,minmax\(0,1fr\)\)/);
+ assert.match(css,/\.file-raid-photo-tile\.is-restored/);
+ assert.match(html,/id="file-raid-photo-shell"/);
+ assert.match(js,/const n=mode==="5"\?4:5/);
+ assert.match(js,/const q=mode==="6"/);
+ assert.match(js,/const p=\(n-1-stripe\+n\)%n/);
+ assert.match(js,/breakdowns=mode==="5"\?\[1\]:\[1,3\]/);
+ assert.match(css,/\.file-raid-drives/);
+ assert.match(css,/@media\(max-width:640px\)/);
+});
+test("Chapitre 4 : pas de parité dédiée à un disque ni d'affirmation de réparation",()=>{
+ const intro=html.slice(html.indexOf('id="parite"'),html.indexOf('id="pannes"'));
+ assert.doesNotMatch(intro,/Trois disques : des fichiers et une protection/);
+ assert.match(intro,/aucun disque n'est réservé uniquement à la parité/);
+ assert.match(intro,/Le RAID ne remplace pas une sauvegarde/);
+ assert.match(js,/les disques en panne ne sont pas réparés/);
+});
+
+test("Chapitre 2 : morceau visible en grand et repérable sur disque",()=>{
+ assert.match(html,/id="file-raid-selection"/);
+ assert.match(js,/const block=document.createElement\(isData\?"button":"span"\)/);
+ assert.match(js,/block\.dataset\.piece=name/);
+ assert.match(js,/tile\.dataset\.piece=name/);
+ assert.match(js,/selectedPiece=selectedPiece===control\.dataset\.piece\?null:control\.dataset\.piece/);
+ assert.match(js,/el\.classList\.toggle\("is-matched",matched\)/);
+ assert.match(css,/#file-raid-lab \.file-raid-drive \.file-raid-mini-photo/);
+ assert.match(css,/aspect-ratio:1\/1/);
+ assert.match(css,/#file-raid-lab \.file-raid-photo-tile\.is-matched/);
+ assert.match(css,/#file-raid-lab \.file-raid-data\.is-matched/);
+ assert.match(css,/#file-raid-lab \.file-raid-selection\[hidden\]/);
+});
+
+test("Chapitre 2 : image entière sans bande bleue dans les blocs",()=>{
+ assert.match(css,/#file-raid-lab \.file-raid-drive \.file-raid-data,\s*#file-raid-lab \.file-raid-recovered \.file-raid-data/);
+ assert.match(css,/background-image:var\(--file-raid-photo\);background-size:400% 300%/);
+ assert.match(css,/aspect-ratio:1\/1/);
+ assert.match(css,/position:absolute;right:3px;bottom:3px/);
+ assert.doesNotMatch(js,/block\.prepend\(thumbnail\)/);
+});
+
+test("Chapitre 2 : chaque parité explique ses trois morceaux sources",()=>{
+ assert.match(js,/const related=pieces\.slice\(\(stripe-1\)\*3,stripe\*3\)/);
+ assert.match(js,/block\.dataset\.related=related\.join\(","\)/);
+ assert.match(js,/explanation\.textContent="Calculée avec"/);
+ assert.match(js,/setPhotoCrop\(image,piece\)/);
+ assert.match(js,/parity\.classList\.toggle\("is-related"/);
+ assert.match(css,/\.file-raid-parity-sources/);
+ assert.match(css,/grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/);
+ assert.match(css,/\.file-raid-parity-mini/);
+ assert.match(html,/Elles ne représentent pas des copies enregistrées/);
+ assert.match(html,/raid-course\.js\?v=16/);
+ assert.match(html,/raid-course\.css\?v=17/);
+});
+
+test("Chapitre 2 : parcours photo avant le simulateur de blocs",()=>{
+ const order=[...html.matchAll(/<section class="chapter" id="([^"]+)"><div class="chapter-head"><span class="chapter-index">([^<]+)<\/span>/g)]
+  .map(match=>[match[1],match[2]]);
+ assert.deepEqual(order,[["depart","01"],["parite","02"],["simulateur","03"],["pannes","04"],["atelier","05"],["choix","06"],["synthese","07"]]);
+ assert.ok(html.indexOf('id="parite"')<html.indexOf('id="simulateur"'));
+ assert.doesNotMatch(html,/id="comprendre"/);
+ assert.match(html,/Version 5\.5/);
+});
+
+test("Mini-défis : une question cohérente avec chaque chapitre de 1 à 6",()=>{
+ const names=["base","parity","compare","backup","spare","case"];
+ for(const [i,name] of names.entries()){
+  const chapterStart=html.indexOf('<span class="chapter-index">'+String(i+1).padStart(2,"0")+'</span>');
+  const quiz=html.indexOf('data-question="'+name+'"');
+  const next=html.indexOf('<section class="chapter"',chapterStart+1);
+  assert.ok(chapterStart>=0 && quiz>chapterStart && (next<0 || quiz<next),name);
+ }
+ assert.match(html,/Dans le parcours de photo\.jpg, à quoi sert le bloc P/);
+ assert.match(html,/Quel RAID écrit les mêmes blocs de données sur deux disques/);
+ assert.match(html,/Un NAS contient 5 disques de 2 To/);
+ assert.match(js,/compare:"RAID 1 conserve les mêmes blocs/);
+ assert.match(js,/parity:"La parité P permet de recalculer/);
+});
+test("Spare et groupes RAID professionnels présentés explicitement",()=>{
+ assert.match(html,/spare \(disque de secours\)/);
+ assert.match(html,/RAID 1 \+ RAID 5 \+ spare/);
+ assert.match(html,/RAID 1 \+ RAID 6 \+ spare/);
+ assert.match(html,/Deux RAID 1 indépendants/);
+ assert.match(html,/deux groupes RAID séparés/);
+ assert.match(html,/serveur de virtualisation/);
+ assert.match(js,/Spare \(disque de secours\)/);
+ assert.match(js,/kind:"spare"/);
+});
+
+test("Atelier central : NAS et comparateur pilotés par les disques",()=>{
+ assert.doesNotMatch(html,/id="tool-level"/);
+ assert.match(html,/id="raid-comparator"/);
+ assert.match(html,/id="raid-compare-detail"/);
+ assert.match(js,/function buildCandidate\(option\)/);
+ assert.match(js,/calculateRaid\(cfg\(option.level/);
+ assert.match(js,/function renderComparator\(/);
+ assert.match(js,/option.kind==="pair"/);
+ assert.match(js,/option.kind==="spare"/);
+ assert.match(js,/d.capacityTB=capacity.value/);
+ assert.match(css,/\.raid-compare-row/);
+ assert.match(css,/@media\(max-width:560px\)\{\.raid-compare-row/);
+});
